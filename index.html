@@ -256,6 +256,15 @@ window.open(waLink,"_blank");
 document.getElementById("waOpen").style.display="none";
 document.getElementById("waSuccess").style.display="block";
 });
+
+setTimeout(()=>{
+document.getElementById("invitePopup").classList.add("fade-out")
+document.getElementById("inviteOverlay").classList.add("fade-out")
+setTimeout(()=>{
+document.getElementById("inviteOverlay").style.display="none"
+},800)
+},5000)
+
 </script>
 </body>
 </html>
