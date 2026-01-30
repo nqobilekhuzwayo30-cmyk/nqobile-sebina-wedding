@@ -125,8 +125,24 @@ Time <span class="time">15:00</span>
 <div class="qna">
 <div class="header-box">Questions & Answers</div>
 <div class="qa-item">
-<h3>When is the RSVPs deadline?</h3>
+<h3>When is the RSVP deadline?</h3>
 <p>Please RSVP by March 1st, so we can have an accurate headcount.</p>
+</div>
+<div class="qa-item">
+<h3>Are kids welcome?</h3>
+<p>As much as we love your little ones, we will not be including them in the ceremony or reception.</p>
+</div>
+<div class="qa-item">
+<h3>Where should I park?</h3>
+<p>There is plenty of free parking available near the entrance of the venue.</p>
+</div>
+<div class="qa-item">
+<h3>Is the wedding indoors or outdoors?</h3>
+<p>The wedding talk and reception will both be held indoors.</p>
+</div>
+<div class="qa-item">
+<h3>Can we take pictures during the wedding?</h3>
+<p>Yes, photos and videos are welcome. Avoid photos during the wedding talk and do not post online without permission from the bride and groom.</p>
 </div>
 </div>
 
@@ -142,8 +158,10 @@ Time <span class="time">15:00</span>
 
 <script>
 const weddingDate = new Date("2026-03-27T13:00:00").getTime()
+
 setInterval(() => {
 const diff = weddingDate - Date.now()
+
 if (diff <= 0) {
 days.textContent = 0
 hours.textContent = 0
@@ -152,12 +170,19 @@ seconds.textContent = 0
 document.getElementById("countdownTitle").textContent = "The wedding has started"
 return
 }
+
 days.textContent = Math.floor(diff / 86400000)
 hours.textContent = Math.floor((diff / 3600000) % 24)
 minutes.textContent = Math.floor((diff / 60000) % 60)
 seconds.textContent = Math.floor((diff / 1000) % 60)
 }, 1000)
-</script>
 
+var submitted=false
+function showThankYou(){
+if(submitted){
+document.querySelector(".rsvp-card form").style.display="none"
+document.getElementById("rsvpSuccess").style.display="block"
+}}
+</script>
 </body>
 </html>
