@@ -35,36 +35,95 @@ body{font-family:"Cormorant Garamond",serif;background:linear-gradient(135deg,#f
 .countdown-number{font-size:2.6rem;font-weight:bold;color:#d8b384}
 .countdown-label{font-size:0.9rem;text-transform:uppercase;color:#666}
 .header-box{display:inline-block;border:2px solid #d8b384;border-radius:14px;padding:14px 20px;font-family:"Playfair Display",serif;font-size:2rem;margin-bottom:25px;animation:floatHeader 6s ease-in-out infinite}
+.map-container .header-box{color:#000}
 .map-container,.qna,.thank-you,.rsvp-card{background:rgba(255,255,255,0.85);border-radius:20px;padding:25px;margin-bottom:50px;text-align:center;box-shadow:0 30px 80px rgba(0,0,0,0.3);animation:floatSlow 9s ease-in-out infinite}
+.map-frame{position:relative;border-radius:22px;overflow:hidden;border:2px solid #d8b384;box-shadow:inset 0 0 0 1px rgba(216,179,132,0.4),0 25px 60px rgba(0,0,0,0.35)}
+.map-frame::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.08),rgba(0,0,0,0.15));pointer-events:none}
 .map-frame iframe{width:100%;height:320px;border:0;border-radius:20px}
+.address{margin-top:18px;font-size:20px;line-height:1.6}
+.address a{color:#2c1f1e;text-decoration:none;border-bottom:1px solid #d8b384}
+.time{font-weight:bold;color:#d8b384}
+.rsvp-card input,.rsvp-card textarea{width:100%;padding:14px;margin:10px 0;border-radius:10px;border:none}
+.rsvp-card button{width:100%;padding:16px;border:none;border-radius:40px;background:#d8b384;font-size:16px;cursor:pointer}
+.success{display:none;padding:20px;color:#b89b5e}
+.qa-item{margin-bottom:30px}
+.qa-item h3{color:#d8b384;font-family:"Playfair Display",serif}
+.thank-you img{max-width:200px;margin-top:20px;border-radius:12px}
 .footer{text-align:center;padding:30px;opacity:0.7}
 
-#invitePopup{position:fixed;inset:0;background:rgba(0,0,0,0.6);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;z-index:999}
-#invitePopup.show{opacity:1;visibility:visible;animation:popupBounce 0.6s forwards}
-#invitePopup.fadeOut{opacity:0;transform:scale(0.9)}
-.popup-content{background:#fff;padding:40px 30px;border-radius:25px;text-align:center;max-width:420px}
-.popup-content h2{font-family:"Dancing Script",cursive;color:#d8b384;font-size:2.5rem;margin-bottom:15px}
-.popup-content p{font-size:1.1rem;margin-bottom:20px}
-.popup-content button{padding:12px 24px;border:none;border-radius:40px;background:#d8b384;color:#fff;font-size:16px;cursor:pointer}
+/* Stylish Popup Styles */
+#invitePopup{
+position:fixed;top:0;left:0;width:100%;height:100%;
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(8px);
+display:flex;justify-content:center;align-items:center;
+z-index:999;
+opacity:0;
+visibility:hidden;
+transition:opacity 0.5s ease, transform 0.5s ease;
+transform:scale(0.9);
+}
+#invitePopup.show{
+opacity:1;
+visibility:visible;
+transform:scale(1);
+}
+#invitePopup.fadeOut{
+opacity:0;
+transform:scale(0.9);
+}
+#invitePopup .popup-content{
+background:#fff;
+padding:40px 30px;
+border-radius:25px;
+text-align:center;
+max-width:400px;
+box-shadow:0 25px 60px rgba(0,0,0,0.35);
+animation:popupFade 0.6s ease forwards;
+}
+#invitePopup .popup-content h2{
+color:#d8b384;
+font-family:"Dancing Script",cursive;
+margin-bottom:20px;
+font-size:2.4rem;
+}
+#invitePopup .popup-content p{
+margin-bottom:20px;
+font-size:1.1rem;
+line-height:1.4;
+color:#333;
+}
+#invitePopup .popup-content button{
+padding:12px 24px;
+border:none;
+border-radius:40px;
+background:#d8b384;
+color:#fff;
+font-size:16px;
+cursor:pointer;
+transition:0.3s;
+}
+#invitePopup .popup-content button:hover{
+background:#b89b5e;
+}
 
-@keyframes popupBounce{
-0%{transform:scale(0.8);opacity:0}
-60%{transform:scale(1.05);opacity:1}
-80%{transform:scale(0.95)}
-100%{transform:scale(1)}
+/* Animations */
+@keyframes popupFade{
+0%{opacity:0;transform:translateY(-20px)}
+100%{opacity:1;transform:translateY(0)}
 }
 @keyframes floatSlow{0%{transform:translateY(0)}50%{transform:translateY(-8px)}100%{transform:translateY(0)}}
 @keyframes floatHeader{0%{transform:translateY(0)}50%{transform:translateY(-4px)}100%{transform:translateY(0)}}
 </style>
 </head>
-
 <body>
 
+<!-- Invitation Popup -->
 <div id="invitePopup">
 <div class="popup-content">
-<h2>You are invited</h2>
-<p>Nqobile and Sebina invite you to celebrate their wedding</p>
-<button onclick="closePopup()">Enter</button>
+<h2>You're Invited!</h2>
+<p>Nqobile & Sebina request the honor of your presence at their wedding.</p>
+<button id="closePopup">Close</button>
 </div>
 </div>
 
@@ -87,4 +146,81 @@ body{font-family:"Cormorant Garamond",serif;background:linear-gradient(135deg,#f
 <div class="countdown">
 <div class="countdown-item"><div class="countdown-number" id="days">0</div><div class="countdown-label">Days</div></div>
 <div class="countdown-item"><div class="countdown-number" id="hours">0</div><div class="countdown-label">Hours</div></div>
-<div class="countdown-item"><div class="countdown-number" id="minutes">0
+<div class="countdown-item"><div class="countdown-number" id="minutes">0</div><div class="countdown-label">Minutes</div></div>
+<div class="countdown-item"><div class="countdown-number" id="seconds">0</div><div class="countdown-label">Seconds</div></div>
+</div>
+</div>
+
+<!-- WhatsApp Photo Sharing Card -->
+<div class="rsvp-card">
+<div class="header-box">Share Your Photos</div>
+<p>You can share your wedding pictures with us via WhatsApp</p>
+<p>Send photos directly to: <strong>067 366 9644</strong></p>
+<p>Click below to open WhatsApp chat directly with us:</p>
+<button id="waOpen">Open WhatsApp Chat</button>
+<div id="waSuccess" class="success">
+<h2>Thank you!</h2>
+<p>WhatsApp chat opened. You can now share your photos.</p>
+</div>
+</div>
+
+<footer class="footer">Made with love by Nqobile and Sebina</footer>
+
+</div>
+
+<script>
+// Show popup on page load
+window.addEventListener("load", () => {
+const popup = document.getElementById("invitePopup");
+popup.classList.add("show");
+
+// Auto fade out with scale after 5 seconds
+setTimeout(() => {
+popup.classList.add("fadeOut");
+setTimeout(() => {
+popup.classList.remove("show","fadeOut");
+},500);
+},5000);
+});
+
+// Close button
+document.getElementById("closePopup").addEventListener("click", () => {
+const popup = document.getElementById("invitePopup");
+popup.classList.add("fadeOut");
+setTimeout(() => {
+popup.classList.remove("show","fadeOut");
+},500);
+});
+
+// Countdown
+const weddingDate = new Date("2026-03-27T13:00:00").getTime()
+setInterval(() => {
+const diff = weddingDate - Date.now()
+if (diff <= 0) {
+days.textContent=0
+hours.textContent=0
+minutes.textContent=0
+seconds.textContent=0
+document.getElementById("countdownTitle").textContent="The wedding has started"
+return
+}
+days.textContent = Math.floor(diff / 86400000)
+hours.textContent = Math.floor((diff / 3600000) % 24)
+minutes.textContent = Math.floor((diff / 60000) % 60)
+seconds.textContent = Math.floor((diff / 1000) % 60)
+}, 1000)
+
+// WhatsApp direct to your number
+document.getElementById("waOpen").addEventListener("click", function(){
+const yourNumber = "27673669644"; // your number with country code
+const msg = encodeURIComponent("Hi! I’d like to share my wedding photos.");
+const isMobile = /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
+let waLink = isMobile ? `https://wa.me/${yourNumber}?text=${msg}` : `https://web.whatsapp.com/send?phone=${yourNumber}&text=${msg}`;
+window.open(waLink,"_blank");
+document.getElementById("waOpen").style.display="none";
+document.getElementById("waSuccess").style.display="block";
+});
+</script>
+
+</body>
+</html>
