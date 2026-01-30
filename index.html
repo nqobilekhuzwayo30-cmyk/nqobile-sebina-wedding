@@ -122,6 +122,18 @@ Time <span class="time">15:00</span>
 </div>
 </div>
 
+<!-- New WhatsApp Photo Sharing Card -->
+<div class="rsvp-card">
+<div class="header-box">Share Your Photos</div>
+<p>You can share your wedding pictures with us via WhatsApp</p>
+<p>Send photos directly to: <strong>067 366 9644</strong></p>
+<p>Alternatively, leave your WhatsApp number below so we can create a group:</p>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLScNfgJbch0Xz2KU7RaLt58EaeB2QoEcxtvL7_S8GzjflThXqg/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true; setTimeout(showThankYou,600);">
+<input name="entry.111111111" placeholder="Your WhatsApp Number" required>
+<button type="submit">Send Number</button>
+</form>
+</div>
+
 <div class="qna">
 <div class="header-box">Questions & Answers</div>
 <div class="qa-item">
@@ -180,8 +192,8 @@ seconds.textContent = Math.floor((diff / 1000) % 60)
 var submitted=false
 function showThankYou(){
 if(submitted){
-document.querySelector(".rsvp-card form").style.display="none"
-document.getElementById("rsvpSuccess").style.display="block"
+document.querySelectorAll(".rsvp-card form").forEach(f=>f.style.display="none")
+document.querySelectorAll(".success").forEach(s=>s.style.display="block")
 }}
 </script>
 </body>
