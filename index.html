@@ -35,10 +35,8 @@ body{font-family:"Cormorant Garamond",serif;background:linear-gradient(135deg,#f
 .countdown-number{font-size:2.6rem;font-weight:bold;color:#d8b384}
 .countdown-label{font-size:0.9rem;text-transform:uppercase;color:#666}
 .header-box{display:inline-block;border:2px solid #d8b384;border-radius:14px;padding:14px 20px;font-family:"Playfair Display",serif;font-size:2rem;margin-bottom:25px;animation:floatHeader 6s ease-in-out infinite}
-.map-container .header-box{color:#000}
 .map-container,.qna,.thank-you,.rsvp-card{background:rgba(255,255,255,0.85);border-radius:20px;padding:25px;margin-bottom:50px;text-align:center;box-shadow:0 30px 80px rgba(0,0,0,0.3);animation:floatSlow 9s ease-in-out infinite}
-.map-frame{position:relative;border-radius:22px;overflow:hidden;border:2px solid #d8b384;box-shadow:inset 0 0 0 1px rgba(216,179,132,0.4),0 25px 60px rgba(0,0,0,0.35)}
-.map-frame::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.08),rgba(0,0,0,0.15));pointer-events:none}
+.map-frame{position:relative;border-radius:22px;overflow:hidden;border:2px solid #d8b384}
 .map-frame iframe{width:100%;height:320px;border:0;border-radius:20px}
 .address{margin-top:18px;font-size:20px;line-height:1.6}
 .address a{color:#2c1f1e;text-decoration:none;border-bottom:1px solid #d8b384}
@@ -50,63 +48,32 @@ body{font-family:"Cormorant Garamond",serif;background:linear-gradient(135deg,#f
 .qa-item h3{color:#d8b384;font-family:"Playfair Display",serif}
 .thank-you img{max-width:200px;margin-top:20px;border-radius:12px}
 .footer{text-align:center;padding:30px;opacity:0.7}
+
 @keyframes floatSlow{0%{transform:translateY(0)}50%{transform:translateY(-8px)}100%{transform:translateY(0)}}
 @keyframes floatHeader{0%{transform:translateY(0)}50%{transform:translateY(-4px)}100%{transform:translateY(0)}}
 
+/* Invitation popup */
+#invitePopup{position:fixed;inset:0;background:rgba(0,0,0,0.45);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;z-index:999;animation:fadeIn 0.8s ease forwards}
+.invite-box{background:white;border-radius:24px;padding:40px 30px;text-align:center;transform:scale(0.85);animation:popIn 1s cubic-bezier(0.22,1.2,0.36,1) forwards}
+.invite-box h2{font-family:"Dancing Script",cursive;font-size:3rem;color:#2c1f1e;margin-bottom:10px}
+.invite-box p{font-size:1.4rem;color:#555}
+.invite-hide{animation:fadeOut 1s ease forwards}
 
-/* Invitation Popup */
-.invite-overlay{
-position:fixed;
-inset:0;
-background:rgba(0,0,0,0.35);
-backdrop-filter:blur(8px);
-display:flex;
-align-items:center;
-justify-content:center;
-z-index:999;
-opacity:0;
-animation:overlayIn 0.6s forwards;
-}
-.invite-popup{
-background:#fff;
-border-radius:26px;
-padding:40px 30px;
-text-align:center;
-max-width:420px;
-box-shadow:0 40px 120px rgba(0,0,0,0.35);
-transform:scale(0.85);
-animation:popupIn 0.8s forwards;
-}
-.invite-popup h2{
-font-family:"Dancing Script",cursive;
-font-size:3rem;
-color:#2c1f1e;
-}
-.invite-popup p{
-margin-top:14px;
-font-size:1.2rem;
-color:#555;
-}
-
-@keyframes popupIn{
-0%{transform:scale(0.85)}
-60%{transform:scale(1.05)}
-100%{transform:scale(1)}
-}
-@keyframes overlayIn{
-to{opacity:1}
-}
-.fade-out{
-animation:popupOut 0.8s forwards;
-}
-@keyframes popupOut{
-to{opacity:0;transform:scale(1.05)}
-}
-
+@keyframes popIn{0%{transform:scale(0.85)}60%{transform:scale(1.05)}100%{transform:scale(1)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes fadeOut{to{opacity:0;transform:scale(1.05)}}
 </style>
 </head>
-
 <body>
+
+<!-- Invitation popup -->
+<div id="invitePopup">
+  <div class="invite-box">
+    <h2>You Are Invited</h2>
+    <p>Please join us as we celebrate our wedding</p>
+  </div>
+</div>
+
 <nav class="navbar">
 <div class="logo">Nqobile <i class="fas fa-heart"></i> Sebina</div>
 </nav>
@@ -173,11 +140,10 @@ Time <span class="time">15:00</span>
 </div>
 </div>
 
-<!-- WhatsApp Photo Sharing Card -->
 <div class="rsvp-card">
 <div class="header-box">Share Your Photos</div>
 <p>You can share your wedding pictures with us via WhatsApp</p>
-
+<p>Send photos directly to: <strong>067 366 9644</strong></p>
 <p>Click below to open WhatsApp chat directly with us:</p>
 <button id="waOpen">Open WhatsApp Chat</button>
 <div id="waSuccess" class="success">
@@ -209,19 +175,6 @@ Time <span class="time">15:00</span>
 <p>Yes, photos and videos are welcome. Avoid photos during the wedding talk and do not post online without permission from the bride and groom.</p>
 </div>
 </div>
-  
-  <div class="invite-overlay" id="inviteOverlay">
-<div class="invite-popup" id="invitePopup">
-<h2>You Are Invited</h2>
-<p>Please join us as we celebrate our wedding</p>
-</div>
-</div>
-
-<nav class="navbar">
-<div class="logo">Nqobile <i class="fas fa-heart"></i> Sebina</div>
-</nav>
-
-<div class="container">
 
 <div class="thank-you">
 <div class="header-box">Thank You</div>
@@ -230,8 +183,6 @@ Time <span class="time">15:00</span>
 </div>
 
 <footer class="footer">Made with love by Nqobile and Sebina</footer>
-
-</div>
 
 <script>
 // Countdown
@@ -270,17 +221,12 @@ document.getElementById("waOpen").style.display="none";
 document.getElementById("waSuccess").style.display="block";
 });
 
+// Invitation popup auto fade out
 setTimeout(()=>{
-document.getElementById("invitePopup").classList.add("fade-out")
-document.getElementById("inviteOverlay").classList.add("fade-out")
-setTimeout(()=>{
-document.getElementById("inviteOverlay").style.display="none"
-},800)
+document.getElementById("invitePopup").classList.add("invite-hide")
+setTimeout(()=>{document.getElementById("invitePopup").style.display="none"},1000)
 },5000)
-
 </script>
+
 </body>
 </html>
-
-
-
