@@ -122,16 +122,20 @@ Time <span class="time">15:00</span>
 </div>
 </div>
 
-<!-- New WhatsApp Photo Sharing Card -->
+<!-- WhatsApp Photo Sharing Card -->
 <div class="rsvp-card">
 <div class="header-box">Share Your Photos</div>
 <p>You can share your wedding pictures with us via WhatsApp</p>
 <p>Send photos directly to: <strong>067 366 9644</strong></p>
-<p>Alternatively, leave your WhatsApp number below so we can create a group:</p>
-<form action="https://docs.google.com/forms/d/e/1FAIpQLScNfgJbch0Xz2KU7RaLt58EaeB2QoEcxtvL7_S8GzjflThXqg/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true; setTimeout(showThankYou,600);">
-<input name="entry.111111111" placeholder="Your WhatsApp Number" required>
-<button type="submit">Send Number</button>
+<p>Or enter your WhatsApp number below to automatically open a chat with us:</p>
+<form id="waForm">
+<input id="waNumber" placeholder="Your WhatsApp Number" required>
+<button type="submit">Open WhatsApp Chat</button>
 </form>
+<div id="waSuccess" class="success">
+<h2>Thank you!</h2>
+<p>WhatsApp chat opened. You can now share your photos.</p>
+</div>
 </div>
 
 <div class="qna">
@@ -169,20 +173,18 @@ Time <span class="time">15:00</span>
 </div>
 
 <script>
+// Countdown
 const weddingDate = new Date("2026-03-27T13:00:00").getTime()
-
 setInterval(() => {
 const diff = weddingDate - Date.now()
-
 if (diff <= 0) {
-days.textContent = 0
-hours.textContent = 0
-minutes.textContent = 0
-seconds.textContent = 0
-document.getElementById("countdownTitle").textContent = "The wedding has started"
+days.textContent=0
+hours.textContent=0
+minutes.textContent=0
+seconds.textContent=0
+document.getElementById("countdownTitle").textContent="The wedding has started"
 return
 }
-
 days.textContent = Math.floor(diff / 86400000)
 hours.textContent = Math.floor((diff / 3600000) % 24)
 minutes.textContent = Math.floor((diff / 60000) % 60)
@@ -195,6 +197,24 @@ if(submitted){
 document.querySelectorAll(".rsvp-card form").forEach(f=>f.style.display="none")
 document.querySelectorAll(".success").forEach(s=>s.style.display="block")
 }}
+
+// WhatsApp Chat Form with device detection and auto country code
+document.getElementById("waForm").addEventListener("submit", function(e){
+e.preventDefault();
+let input = document.getElementById("waNumber").value.trim();
+// Auto-add country code +27 if missing
+if(!input.startsWith("27")) input = "27" + input.replace(/^0/, "");
+const msg = encodeURIComponent("Hi! I’d like to share my wedding photos.");
+// Detect mobile or desktop
+const isMobile = /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
+let waLink = `https://wa.me/${input}?text=${msg}`;
+if(!isMobile){
+waLink = `https://web.whatsapp.com/send?phone=${input}&text=${msg}`;
+}
+window.open(waLink, "_blank");
+document.getElementById("waForm").style.display="none";
+document.getElementById("waSuccess").style.display="block";
+});
 </script>
 </body>
 </html>
