@@ -127,11 +127,8 @@ Time <span class="time">15:00</span>
 <div class="header-box">Share Your Photos</div>
 <p>You can share your wedding pictures with us via WhatsApp</p>
 <p>Send photos directly to: <strong>067 366 9644</strong></p>
-<p>Or enter your WhatsApp number below to automatically open a chat with us:</p>
-<form id="waForm">
-<input id="waNumber" placeholder="Your WhatsApp Number" required>
-<button type="submit">Open WhatsApp Chat</button>
-</form>
+<p>Click below to open WhatsApp chat directly with us:</p>
+<button id="waOpen">Open WhatsApp Chat</button>
 <div id="waSuccess" class="success">
 <h2>Thank you!</h2>
 <p>WhatsApp chat opened. You can now share your photos.</p>
@@ -198,21 +195,14 @@ document.querySelectorAll(".rsvp-card form").forEach(f=>f.style.display="none")
 document.querySelectorAll(".success").forEach(s=>s.style.display="block")
 }}
 
-// WhatsApp Chat Form with device detection and auto country code
-document.getElementById("waForm").addEventListener("submit", function(e){
-e.preventDefault();
-let input = document.getElementById("waNumber").value.trim();
-// Auto-add country code +27 if missing
-if(!input.startsWith("27")) input = "27" + input.replace(/^0/, "");
+// WhatsApp direct to your number
+document.getElementById("waOpen").addEventListener("click", function(){
+const yourNumber = "27673669644"; // your number with country code
 const msg = encodeURIComponent("Hi! I’d like to share my wedding photos.");
-// Detect mobile or desktop
 const isMobile = /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
-let waLink = `https://wa.me/${input}?text=${msg}`;
-if(!isMobile){
-waLink = `https://web.whatsapp.com/send?phone=${input}&text=${msg}`;
-}
-window.open(waLink, "_blank");
-document.getElementById("waForm").style.display="none";
+let waLink = isMobile ? `https://wa.me/${yourNumber}?text=${msg}` : `https://web.whatsapp.com/send?phone=${yourNumber}&text=${msg}`;
+window.open(waLink,"_blank");
+document.getElementById("waOpen").style.display="none";
 document.getElementById("waSuccess").style.display="block";
 });
 </script>
