@@ -165,17 +165,10 @@ background:#b89b5e;
 </div>
 
 <script>
-// Show popup on page load
+// Stylish popup show
 window.addEventListener("load", () => {
-const popup = document.getElementById("invitePopup");
-popup.classList.add("show");
-// Auto fade out after 5 seconds
-setTimeout(() => {
-popup.classList.remove("show");
-},5000);
+document.getElementById("invitePopup").classList.add("show");
 });
-
-// Close button
 document.getElementById("closePopup").addEventListener("click", () => {
 document.getElementById("invitePopup").classList.remove("show");
 });
