@@ -1,1 +1,326 @@
-<!DOCTYPE html> <html lang="en"> <head> <meta charset="utf-8"> <title>Nqobile and Sebina Wedding</title> <link rel="icon" type="image/png" href="favicon.png"> <link rel="apple-touch-icon" href="favicon.png"> <meta name="viewport" content="width=device-width, initial-scale=1"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Cormorant+Garamond:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet"> <style> *{margin:0;padding:0;box-sizing:border-box;user-select:none} body{ font-family:"Cormorant Garamond",serif; background:linear-gradient(135deg,#f7f2f3,#e8d9cf); min-height:100vh; overflow-x:hidden } .navbar{ background:rgba(255,255,255,0.95); backdrop-filter:blur(16px); padding:18px 0; position:sticky; top:0; text-align:center; box-shadow:0 4px 20px rgba(0,0,0,0.1); z-index:10 } .logo{ font-family:"Dancing Script",cursive; font-size:2.4rem; color:#d8b384; font-weight:700 } .container{ max-width:1200px; margin:auto; padding:24px } .hero-card{ background:rgba(255,255,255,0.85); border-radius:24px; padding:40px 24px; text-align:center; box-shadow:0 35px 90px rgba(0,0,0,0.3); animation:floatSlow 8s ease-in-out infinite; margin-bottom:50px } .hero-names{ font-family:"Dancing Script",cursive; font-size:clamp(4rem,12vw,6rem); color:#2c1f1e } .hero-date{ font-size:2rem; color:#d8b384; margin:20px 0 40px } .invite-video{ width:100%; max-width:820px; border-radius:18px; box-shadow:0 30px 80px rgba(0,0,0,0.3); animation:floatSlow 9s ease-in-out infinite } .countdown-card{text-align:center;margin-bottom:50px} .countdown-title{ display:inline-block; font-family:"Playfair Display",serif; font-size:2.4rem; border:2px solid #d8b384; border-radius:14px; padding:12px 24px; margin-bottom:20px; animation:floatHeader 6s ease-in-out infinite } .countdown{ display:flex; justify-content:center; gap:24px; flex-wrap:wrap } .countdown-item{ background:rgba(255,255,255,0.85); padding:26px 22px; border-radius:20px; min-width:120px; box-shadow:0 30px 80px rgba(0,0,0,0.3); animation:floatSlow 8s ease-in-out infinite } .countdown-number{ font-size:2.6rem; font-weight:bold; color:#d8b384 } .countdown-label{ font-size:0.9rem; text-transform:uppercase; color:#666 } .header-box{ display:inline-block; border:2px solid #d8b384; border-radius:14px; padding:14px 20px; font-family:"Playfair Display",serif; font-size:2rem; margin-bottom:25px; animation:floatHeader 6s ease-in-out infinite } .map-container .header-box{ color:#000 } .map-container, .qna, .thank-you, .rsvp-card{ background:rgba(255,255,255,0.85); border-radius:20px; padding:25px; margin-bottom:50px; text-align:center; box-shadow:0 30px 80px rgba(0,0,0,0.3); animation:floatSlow 9s ease-in-out infinite } .map-frame{ position:relative; border-radius:22px; overflow:hidden; border:2px solid #d8b384; box-shadow:inset 0 0 0 1px rgba(216,179,132,0.4),0 25px 60px rgba(0,0,0,0.35) } .map-frame::after{ content:""; position:absolute; inset:0; background:linear-gradient(to bottom,rgba(0,0,0,0.08),rgba(0,0,0,0.15)); pointer-events:none } .map-frame iframe{ width:100%; height:320px; border:0; border-radius:20px } .address{ margin-top:18px; font-size:20px; line-height:1.6 } .address a{ color:#2c1f1e; text-decoration:none; border-bottom:1px solid #d8b384 } .time{font-weight:bold;color:#d8b384} .rsvp-card input, .rsvp-card textarea{ width:100%; padding:14px; margin:10px 0; border-radius:10px; border:none } .rsvp-card button{ width:100%; padding:16px; border:none; border-radius:40px; background:#d8b384; font-size:16px; cursor:pointer } .success{display:none;padding:20px;color:#b89b5e} .qa-item{margin-bottom:30px} .qa-item h3{ color:#d8b384; font-family:"Playfair Display",serif } .thank-you img{ max-width:200px; margin-top:20px; border-radius:12px } .footer{text-align:center;padding:30px;opacity:0.7} @keyframes floatSlow{ 0%{transform:translateY(0)} 50%{transform:translateY(-8px)} 100%{transform:translateY(0)} } @keyframes floatHeader{ 0%{transform:translateY(0)} 50%{transform:translateY(-4px)} 100%{transform:translateY(0)} } </style> </head> <body> <nav class="navbar"> <div class="logo">Nqobile <i class="fas fa-heart"></i> Sebina</div> </nav> <div class="container"> <div class="hero-card"> <h1 class="hero-names">Nqobile & Sebina</h1> <p class="hero-date">Friday, March 27, 2026</p> <video autoplay muted loop playsinline class="invite-video"> <source src="vid.mp4" type="video/mp4"> </video> </div> <div class="countdown-card"> <div class="countdown-title">The Countdown</div> <div class="countdown"> <div class="countdown-item"><div class="countdown-number" id="days">0</div><div class="countdown-label">Days</div></div> <div class="countdown-item"><div class="countdown-number" id="hours">0</div><div class="countdown-label">Hours</div></div> <div class="countdown-item"><div class="countdown-number" id="minutes">0</div><div class="countdown-label">Minutes</div></div> <div class="countdown-item"><div class="countdown-number" id="seconds">0</div><div class="countdown-label">Seconds</div></div> </div> </div> <div class="map-container"> <a href="https://www.google.com/maps?q=1+Milner+Drive+Kibler+Park+Johannesburg+2059" target="_blank"> <div class="header-box">Wedding Talk</div> </a> <div class="address"> Kibler Park Kingdom Hall<br> Time <span class="time">13:00</span> </div> <div class="map-frame"> <iframe src="https://www.google.com/maps?q=1%20Milner%20Drive%20Kibler%20Park%20Johannesburg&output=embed"></iframe> </div> </div> <div class="map-container"> <a href="https://www.google.com/maps?q=21+Barnacle+Road+Towerby+Johannesburg+South" target="_blank"> <div class="header-box">Reception</div> </a> <div class="address"> Buena Vista Country Estate wedding venue<br> Time <span class="time">15:00</span> </div> <div class="map-frame"> <iframe src="https://www.google.com/maps?q=21%20Barnacle%20Rd%20Towerby%20Johannesburg%20South&output=embed"></iframe> </div> </div> <div class="rsvp-card"> <div class="header-box">RSVP</div> <form action="https://docs.google.com/forms/d/e/1FAIpQLScNfgJbch0Xz2KU7RaLt58EaeB2QoEcxtvL7_S8GzjflThXqg/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true; setTimeout(showThankYou,600);"> <input name="entry.994600838" placeholder="Full Name" required> <input name="entry.793758707" placeholder="Phone Number" required> <input name="entry.458040034" value="1" readonly> <textarea name="entry.282977896" placeholder="Message"></textarea> <button type="submit">Send RSVP</button> </form> <iframe name="hidden_iframe" style="display:none"></iframe> <div id="rsvpSuccess" class="success"> <h2>Thank you!</h2> <p>Your RSVP has been received.</p> </div> </div> <div class="qna"> <div class="header-box">Questions & Answers</div> <div class="qa-item"> <h3>When is the RSVP deadline?</h3> <p>Please RSVP by March 1st, so we can have an accurate headcount.</p> </div> <div class="qa-item"> <h3>Are kids welcome?</h3> <p>As much as we love your little ones, we will not be including them in the ceremony or reception.</p> </div> <div class="qa-item"> <h3>Where should I park?</h3> <p>There is plenty of free parking available near the entrance of the venue.</p> </div> <div class="qa-item"> <h3>Is the wedding indoors or outdoors?</h3> <p>The wedding talk and reception will both be held indoors.</p> </div> <div class="qa-item"> <h3>Can we take pictures during the wedding?</h3> <p>Yes, photos and videos are welcome. Avoid photos during the wedding talk and do not post online without permission from the bride and groom.</p> </div> </div> <div class="thank-you"> <div class="header-box">Thank You</div> <p>We cannot wait to celebrate with you.</p> <img src="00.jpg" alt="Thank You"> </div> <footer class="footer">Made with love by Nqobile and Sebina</footer> </div> <script> const weddingDate=new Date("2026-03-27T00:00:00").getTime() setInterval(()=>{ const diff=weddingDate-Date.now() if(diff<=0)return days.textContent=Math.floor(diff/86400000) hours.textContent=Math.floor(diff/3600000%24) minutes.textContent=Math.floor(diff/60000%60) seconds.textContent=Math.floor(diff/1000%60) },1000) var submitted=false function showThankYou(){ if(submitted){ document.querySelector(".rsvp-card form").style.display="none" document.getElementById("rsvpSuccess").style.display="block" }} </script> </body> </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Nqobile and Sebina Wedding</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Cormorant+Garamond:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;user-select:none}
+body{
+font-family:"Cormorant Garamond",serif;
+background:linear-gradient(135deg,#f7f2f3,#e8d9cf);
+min-height:100vh;
+overflow-x:hidden
+}
+.navbar{
+background:rgba(255,255,255,0.95);
+backdrop-filter:blur(16px);
+padding:18px 0;
+position:sticky;
+top:0;
+text-align:center;
+box-shadow:0 4px 20px rgba(0,0,0,0.1);
+z-index:10
+}
+.logo{
+font-family:"Dancing Script",cursive;
+font-size:2.4rem;
+color:#d8b384;
+font-weight:700
+}
+.container{
+max-width:1200px;
+margin:auto;
+padding:24px
+}
+.hero-card{
+background:rgba(255,255,255,0.85);
+border-radius:24px;
+padding:40px 24px;
+text-align:center;
+box-shadow:0 35px 90px rgba(0,0,0,0.3);
+animation:floatSlow 8s ease-in-out infinite;
+margin-bottom:50px
+}
+.hero-names{
+font-family:"Dancing Script",cursive;
+font-size:clamp(4rem,12vw,6rem);
+color:#2c1f1e
+}
+.hero-date{
+font-size:2rem;
+color:#d8b384;
+margin:20px 0 40px
+}
+.invite-video{
+width:100%;
+max-width:820px;
+border-radius:18px;
+box-shadow:0 30px 80px rgba(0,0,0,0.3);
+animation:floatSlow 9s ease-in-out infinite
+}
+.countdown-card{text-align:center;margin-bottom:50px}
+.countdown-title{
+display:inline-block;
+font-family:"Playfair Display",serif;
+font-size:2.4rem;
+border:2px solid #d8b384;
+border-radius:14px;
+padding:12px 24px;
+margin-bottom:20px;
+animation:floatHeader 6s ease-in-out infinite
+}
+.countdown{
+display:flex;
+justify-content:center;
+gap:24px;
+flex-wrap:wrap
+}
+.countdown-item{
+background:rgba(255,255,255,0.85);
+padding:26px 22px;
+border-radius:20px;
+min-width:120px;
+box-shadow:0 30px 80px rgba(0,0,0,0.3);
+animation:floatSlow 8s ease-in-out infinite
+}
+.countdown-number{
+font-size:2.6rem;
+font-weight:bold;
+color:#d8b384
+}
+.countdown-label{
+font-size:0.9rem;
+text-transform:uppercase;
+color:#666
+}
+.header-box{
+display:inline-block;
+border:2px solid #d8b384;
+border-radius:14px;
+padding:14px 20px;
+font-family:"Playfair Display",serif;
+font-size:2rem;
+margin-bottom:25px;
+animation:floatHeader 6s ease-in-out infinite
+}
+.map-container .header-box{color:#000}
+.map-container,.qna,.thank-you,.rsvp-card{
+background:rgba(255,255,255,0.85);
+border-radius:20px;
+padding:25px;
+margin-bottom:50px;
+text-align:center;
+box-shadow:0 30px 80px rgba(0,0,0,0.3);
+animation:floatSlow 9s ease-in-out infinite
+}
+.map-frame{
+position:relative;
+border-radius:22px;
+overflow:hidden;
+border:2px solid #d8b384;
+box-shadow:inset 0 0 0 1px rgba(216,179,132,0.4),0 25px 60px rgba(0,0,0,0.35)
+}
+.map-frame::after{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(to bottom,rgba(0,0,0,0.08),rgba(0,0,0,0.15));
+pointer-events:none
+}
+.map-frame iframe{
+width:100%;
+height:320px;
+border:0;
+border-radius:20px
+}
+.address{
+margin-top:18px;
+font-size:20px;
+line-height:1.6
+}
+.address a{
+color:#2c1f1e;
+text-decoration:none;
+border-bottom:1px solid #d8b384
+}
+.time{font-weight:bold;color:#d8b384}
+.rsvp-card input,.rsvp-card textarea{
+width:100%;
+padding:14px;
+margin:10px 0;
+border-radius:10px;
+border:none
+}
+.rsvp-card button{
+width:100%;
+padding:16px;
+border:none;
+border-radius:40px;
+background:#d8b384;
+font-size:16px;
+cursor:pointer
+}
+.success{display:none;padding:20px;color:#b89b5e}
+.qa-item{margin-bottom:30px}
+.qa-item h3{
+color:#d8b384;
+font-family:"Playfair Display",serif
+}
+.thank-you img{
+max-width:200px;
+margin-top:20px;
+border-radius:12px
+}
+.footer{text-align:center;padding:30px;opacity:0.7}
+@keyframes floatSlow{
+0%{transform:translateY(0)}
+50%{transform:translateY(-8px)}
+100%{transform:translateY(0)}
+}
+@keyframes floatHeader{
+0%{transform:translateY(0)}
+50%{transform:translateY(-4px)}
+100%{transform:translateY(0)}
+}
+</style>
+</head>
+
+<body>
+<nav class="navbar">
+<div class="logo">Nqobile <i class="fas fa-heart"></i> Sebina</div>
+</nav>
+
+<div class="container">
+
+<div class="hero-card">
+<h1 class="hero-names">Nqobile & Sebina</h1>
+<p class="hero-date">Friday, March 27, 2026</p>
+<video autoplay muted loop playsinline class="invite-video">
+<source src="vid.mp4" type="video/mp4">
+</video>
+</div>
+
+<div class="countdown-card">
+<div class="countdown-title" id="countdownTitle">The Countdown</div>
+<div class="countdown">
+<div class="countdown-item"><div class="countdown-number" id="days">0</div><div class="countdown-label">Days</div></div>
+<div class="countdown-item"><div class="countdown-number" id="hours">0</div><div class="countdown-label">Hours</div></div>
+<div class="countdown-item"><div class="countdown-number" id="minutes">0</div><div class="countdown-label">Minutes</div></div>
+<div class="countdown-item"><div class="countdown-number" id="seconds">0</div><div class="countdown-label">Seconds</div></div>
+</div>
+</div>
+
+<div class="map-container">
+<a href="https://www.google.com/maps?q=1+Milner+Drive+Kibler+Park+Johannesburg+2059" target="_blank">
+<div class="header-box">Wedding Talk</div>
+</a>
+<div class="address">
+Kibler Park Kingdom Hall<br>
+Time <span class="time">13:00</span>
+</div>
+<div class="map-frame">
+<iframe src="https://www.google.com/maps?q=1%20Milner%20Drive%20Kibler%20Park%20Johannesburg&output=embed"></iframe>
+</div>
+</div>
+
+<div class="map-container">
+<a href="https://www.google.com/maps?q=21+Barnacle+Road+Towerby+Johannesburg+South" target="_blank">
+<div class="header-box">Reception</div>
+</a>
+<div class="address">
+Buena Vista Country Estate wedding venue<br>
+Time <span class="time">15:00</span>
+</div>
+<div class="map-frame">
+<iframe src="https://www.google.com/maps?q=21%20Barnacle%20Rd%20Towerby%20Johannesburg%20South&output=embed"></iframe>
+</div>
+</div>
+
+<div class="rsvp-card">
+<div class="header-box">RSVP</div>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLScNfgJbch0Xz2KU7RaLt58EaeB2QoEcxtvL7_S8GzjflThXqg/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true; setTimeout(showThankYou,600);">
+<input name="entry.994600838" placeholder="Full Name" required>
+<input name="entry.793758707" placeholder="Phone Number" required>
+<input name="entry.458040034" value="1" readonly>
+<textarea name="entry.282977896" placeholder="Message"></textarea>
+<button type="submit">Send RSVP</button>
+</form>
+<iframe name="hidden_iframe" style="display:none"></iframe>
+<div id="rsvpSuccess" class="success">
+<h2>Thank you!</h2>
+<p>Your RSVP has been received.</p>
+</div>
+</div>
+
+<div class="qna">
+<div class="header-box">Questions & Answers</div>
+<div class="qa-item">
+<h3>When is the RSVP deadline?</h3>
+<p>Please RSVP by March 1st, so we can have an accurate headcount.</p>
+</div>
+<div class="qa-item">
+<h3>Are kids welcome?</h3>
+<p>As much as we love your little ones, we will not be including them in the ceremony or reception.</p>
+</div>
+<div class="qa-item">
+<h3>Where should I park?</h3>
+<p>There is plenty of free parking available near the entrance of the venue.</p>
+</div>
+<div class="qa-item">
+<h3>Is the wedding indoors or outdoors?</h3>
+<p>The wedding talk and reception will both be held indoors.</p>
+</div>
+<div class="qa-item">
+<h3>Can we take pictures during the wedding?</h3>
+<p>Yes, photos and videos are welcome. Avoid photos during the wedding talk and do not post online without permission from the bride and groom.</p>
+</div>
+</div>
+
+<div class="thank-you">
+<div class="header-box">Thank You</div>
+<p>We cannot wait to celebrate with you.</p>
+<img src="00.jpg" alt="Thank You">
+</div>
+
+<footer class="footer">Made with love by Nqobile and Sebina</footer>
+
+</div>
+
+<script>
+const weddingDate = new Date("2026-03-27T13:00:00").getTime()
+
+setInterval(() => {
+const diff = weddingDate - Date.now()
+
+if (diff <= 0) {
+days.textContent = 0
+hours.textContent = 0
+minutes.textContent = 0
+seconds.textContent = 0
+document.getElementById("countdownTitle").textContent = "The wedding has started"
+return
+}
+
+days.textContent = Math.floor(diff / 86400000)
+hours.textContent = Math.floor((diff / 3600000) % 24)
+minutes.textContent = Math.floor((diff / 60000) % 60)
+seconds.textContent = Math.floor((diff / 1000) % 60)
+}, 1000)
+
+var submitted = false
+
+function showThankYou() {
+if (submitted) {
+document.querySelector(".rsvp-card form").style.display = "none"
+document.getElementById("rsvpSuccess").style.display = "block"
+}
+}
+</script>
+
+</body>
+</html>
