@@ -41,7 +41,6 @@ body{font-family:"Cormorant Garamond",serif;background:linear-gradient(135deg,#f
 .map-frame::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.08),rgba(0,0,0,0.15));pointer-events:none}
 .map-frame iframe{width:100%;height:320px;border:0;border-radius:20px}
 .address{margin-top:18px;font-size:20px;line-height:1.6}
-.address a{color:#2c1f1e;text-decoration:none;border-bottom:1px solid #d8b384}
 .time{font-weight:bold;color:#d8b384}
 .rsvp-card input,.rsvp-card textarea{width:100%;padding:14px;margin:10px 0;border-radius:10px;border:none}
 .rsvp-card button{width:100%;padding:16px;border:none;border-radius:40px;background:#d8b384;font-size:16px;cursor:pointer}
@@ -51,12 +50,12 @@ body{font-family:"Cormorant Garamond",serif;background:linear-gradient(135deg,#f
 .thank-you img{max-width:200px;margin-top:20px;border-radius:12px}
 .footer{text-align:center;padding:30px;opacity:0.7}
 
-/* Popup styles */
-.invite-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.35);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;z-index:999;opacity:0;pointer-events:none;transition:opacity 0.6s ease}
+/* Invitation popup */
+.invite-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.35);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;z-index:999;opacity:0;pointer-events:none;transition:opacity 0.5s ease}
 .invite-overlay.show{opacity:1;pointer-events:auto}
-.invite-popup{background:rgba(255,255,255,0.95);border-radius:26px;padding:40px 34px;text-align:center;box-shadow:0 40px 120px rgba(0,0,0,0.35);transform:scale(0.85);animation:inviteIn 1.1s cubic-bezier(.22,1.4,.36,1)}
-.invite-popup.fadeout{animation:inviteOut 1s ease forwards}
-.invite-popup h2{font-family:"Dancing Script",cursive;font-size:3rem;color:#2c1f1e;margin-bottom:12px}
+.invite-popup{background:rgba(255,255,255,0.95);border-radius:26px;padding:36px 30px;text-align:center;box-shadow:0 40px 120px rgba(0,0,0,0.35);animation:inviteIn 1s cubic-bezier(.22,1.4,.36,1) forwards}
+.invite-popup.fadeout{animation:inviteOut 0.9s ease forwards}
+.invite-popup h2{font-family:"Dancing Script",cursive;font-size:3rem;color:#2c1f1e;margin-bottom:10px}
 .invite-popup p{font-size:1.2rem;color:#666}
 
 @keyframes inviteIn{
@@ -79,7 +78,7 @@ body{font-family:"Cormorant Garamond",serif;background:linear-gradient(135deg,#f
 <div class="invite-overlay" id="inviteOverlay">
 <div class="invite-popup" id="invitePopup">
 <h2>Your Invitation</h2>
-<p>You are warmly invited to celebrate the wedding of</p>
+<p>You are warmly invited to the wedding of</p>
 <p><strong>Nqobile and Sebina</strong></p>
 </div>
 </div>
@@ -89,56 +88,52 @@ body{font-family:"Cormorant Garamond",serif;background:linear-gradient(135deg,#f
 </nav>
 
 <div class="container">
-<!-- existing content unchanged -->
+
+<div class="hero-card">
+<h1 class="hero-names">Nqobile & Sebina</h1>
+<p class="hero-date">Friday, March 27, 2026</p>
+<video autoplay muted loop playsinline class="invite-video">
+<source src="vid.mp4" type="video/mp4">
+</video>
+</div>
+
+<div class="countdown-card">
+<div class="countdown-title" id="countdownTitle">The Countdown</div>
+<div class="countdown">
+<div class="countdown-item"><div class="countdown-number" id="days">0</div><div class="countdown-label">Days</div></div>
+<div class="countdown-item"><div class="countdown-number" id="hours">0</div><div class="countdown-label">Hours</div></div>
+<div class="countdown-item"><div class="countdown-number" id="minutes">0</div><div class="countdown-label">Minutes</div></div>
+<div class="countdown-item"><div class="countdown-number" id="seconds">0</div><div class="countdown-label">Seconds</div></div>
+</div>
+</div>
+
+<footer class="footer">Made with love by Nqobile and Sebina</footer>
+
 </div>
 
 <script>
 // Countdown
-const weddingDate = new Date("2026-03-27T13:00:00").getTime()
-setInterval(() => {
-const diff = weddingDate - Date.now()
-if (diff <= 0) {
-days.textContent=0
-hours.textContent=0
-minutes.textContent=0
-seconds.textContent=0
-document.getElementById("countdownTitle").textContent="The wedding has started"
-return
-}
-days.textContent = Math.floor(diff / 86400000)
-hours.textContent = Math.floor((diff / 3600000) % 24)
-minutes.textContent = Math.floor((diff / 60000) % 60)
-seconds.textContent = Math.floor((diff / 1000) % 60)
-}, 1000)
+const weddingDate=new Date("2026-03-27T13:00:00").getTime()
+setInterval(()=>{
+const diff=weddingDate-Date.now()
+if(diff<=0){days.textContent=0;hours.textContent=0;minutes.textContent=0;seconds.textContent=0;countdownTitle.textContent="The wedding has started";return}
+days.textContent=Math.floor(diff/86400000)
+hours.textContent=Math.floor(diff/3600000%24)
+minutes.textContent=Math.floor(diff/60000%60)
+seconds.textContent=Math.floor(diff/1000%60)
+},1000)
 
-var submitted=false
-function showThankYou(){
-if(submitted){
-document.querySelectorAll(".rsvp-card form").forEach(f=>f.style.display="none")
-document.querySelectorAll(".success").forEach(s=>s.style.display="block")
-}}
-
-// WhatsApp
-document.getElementById("waOpen").addEventListener("click", function(){
-const yourNumber = "27673669644"
-const msg = encodeURIComponent("Hi! I’d like to share my wedding photos.")
-const isMobile = /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent)
-let waLink = isMobile ? `https://wa.me/${yourNumber}?text=${msg}` : `https://web.whatsapp.com/send?phone=${yourNumber}&text=${msg}`
-window.open(waLink,"_blank")
-document.getElementById("waOpen").style.display="none"
-document.getElementById("waSuccess").style.display="block"
-})
-
-// Popup logic
-window.addEventListener("load", () => {
-const overlay = document.getElementById("inviteOverlay")
-const popup = document.getElementById("invitePopup")
+// Popup
+window.addEventListener("load",()=>{
+const overlay=document.getElementById("inviteOverlay")
+const popup=document.getElementById("invitePopup")
 overlay.classList.add("show")
-setTimeout(() => {
+setTimeout(()=>{
 popup.classList.add("fadeout")
 overlay.classList.remove("show")
-}, 5000)
+},5000)
 })
 </script>
+
 </body>
 </html>
