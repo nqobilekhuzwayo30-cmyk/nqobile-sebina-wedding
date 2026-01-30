@@ -3,11 +3,21 @@
 <head>
 <meta charset="utf-8">
 <title>Nqobile and Sebina Wedding</title>
+
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="favicon.png">
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta property="og:title" content="Nqobile & Sebina Wedding">
+<meta property="og:description" content="Join us as we celebrate our wedding on March 27, 2026">
+<meta property="og:image" content="https://github.com/share.jpg">
+<meta property="og:url" content="https://github.com">
+<meta property="og:type" content="website">
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Cormorant+Garamond:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
 <style>
 *{margin:0;padding:0;box-sizing:border-box;user-select:none}
 body{
@@ -215,78 +225,6 @@ border-radius:12px
 </div>
 </div>
 
-<div class="map-container">
-<a href="https://www.google.com/maps?q=1+Milner+Drive+Kibler+Park+Johannesburg+2059" target="_blank">
-<div class="header-box">Wedding Talk</div>
-</a>
-<div class="address">
-Kibler Park Kingdom Hall<br>
-Time <span class="time">13:00</span>
-</div>
-<div class="map-frame">
-<iframe src="https://www.google.com/maps?q=1%20Milner%20Drive%20Kibler%20Park%20Johannesburg&output=embed"></iframe>
-</div>
-</div>
-
-<div class="map-container">
-<a href="https://www.google.com/maps?q=21+Barnacle+Road+Towerby+Johannesburg+South" target="_blank">
-<div class="header-box">Reception</div>
-</a>
-<div class="address">
-Buena Vista Country Estate wedding venue<br>
-Time <span class="time">15:00</span>
-</div>
-<div class="map-frame">
-<iframe src="https://www.google.com/maps?q=21%20Barnacle%20Rd%20Towerby%20Johannesburg%20South&output=embed"></iframe>
-</div>
-</div>
-
-<div class="rsvp-card">
-<div class="header-box">RSVP</div>
-<form action="https://docs.google.com/forms/d/e/1FAIpQLScNfgJbch0Xz2KU7RaLt58EaeB2QoEcxtvL7_S8GzjflThXqg/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true; setTimeout(showThankYou,600);">
-<input name="entry.994600838" placeholder="Full Name" required>
-<input name="entry.793758707" placeholder="Phone Number" required>
-<input name="entry.458040034" value="1" readonly>
-<textarea name="entry.282977896" placeholder="Message"></textarea>
-<button type="submit">Send RSVP</button>
-</form>
-<iframe name="hidden_iframe" style="display:none"></iframe>
-<div id="rsvpSuccess" class="success">
-<h2>Thank you!</h2>
-<p>Your RSVP has been received.</p>
-</div>
-</div>
-
-<div class="qna">
-<div class="header-box">Questions & Answers</div>
-<div class="qa-item">
-<h3>When is the RSVP deadline?</h3>
-<p>Please RSVP by March 1st, so we can have an accurate headcount.</p>
-</div>
-<div class="qa-item">
-<h3>Are kids welcome?</h3>
-<p>As much as we love your little ones, we will not be including them in the ceremony or reception.</p>
-</div>
-<div class="qa-item">
-<h3>Where should I park?</h3>
-<p>There is plenty of free parking available near the entrance of the venue.</p>
-</div>
-<div class="qa-item">
-<h3>Is the wedding indoors or outdoors?</h3>
-<p>The wedding talk and reception will both be held indoors.</p>
-</div>
-<div class="qa-item">
-<h3>Can we take pictures during the wedding?</h3>
-<p>Yes, photos and videos are welcome. Avoid photos during the wedding talk and do not post online without permission from the bride and groom.</p>
-</div>
-</div>
-
-<div class="thank-you">
-<div class="header-box">Thank You</div>
-<p>We cannot wait to celebrate with you.</p>
-<img src="00.jpg" alt="Thank You">
-</div>
-
 <footer class="footer">Made with love by Nqobile and Sebina</footer>
 
 </div>
@@ -311,15 +249,6 @@ hours.textContent = Math.floor((diff / 3600000) % 24)
 minutes.textContent = Math.floor((diff / 60000) % 60)
 seconds.textContent = Math.floor((diff / 1000) % 60)
 }, 1000)
-
-var submitted = false
-
-function showThankYou() {
-if (submitted) {
-document.querySelector(".rsvp-card form").style.display = "none"
-document.getElementById("rsvpSuccess").style.display = "block"
-}
-}
 </script>
 
 </body>
