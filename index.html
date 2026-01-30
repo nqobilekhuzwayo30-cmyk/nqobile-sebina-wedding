@@ -68,10 +68,6 @@ opacity:1;
 visibility:visible;
 transform:scale(1);
 }
-#invitePopup.fadeOut{
-opacity:0;
-transform:scale(0.9);
-}
 #invitePopup .popup-content{
 background:#fff;
 padding:40px 30px;
@@ -173,23 +169,15 @@ background:#b89b5e;
 window.addEventListener("load", () => {
 const popup = document.getElementById("invitePopup");
 popup.classList.add("show");
-
-// Auto fade out with scale after 5 seconds
+// Auto fade out after 5 seconds
 setTimeout(() => {
-popup.classList.add("fadeOut");
-setTimeout(() => {
-popup.classList.remove("show","fadeOut");
-},500);
+popup.classList.remove("show");
 },5000);
 });
 
 // Close button
 document.getElementById("closePopup").addEventListener("click", () => {
-const popup = document.getElementById("invitePopup");
-popup.classList.add("fadeOut");
-setTimeout(() => {
-popup.classList.remove("show","fadeOut");
-},500);
+document.getElementById("invitePopup").classList.remove("show");
 });
 
 // Countdown
