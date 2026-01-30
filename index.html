@@ -51,16 +51,67 @@ body{font-family:"Cormorant Garamond",serif;background:linear-gradient(135deg,#f
 .thank-you img{max-width:200px;margin-top:20px;border-radius:12px}
 .footer{text-align:center;padding:30px;opacity:0.7}
 
-/* Popup Styles */
-#invitePopup{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);display:flex;justify-content:center;align-items:center;z-index:999;opacity:0;visibility:hidden;transition:0.3s}
-#invitePopup.show{opacity:1;visibility:visible}
-#invitePopup .popup-content{background:#fff;padding:40px 30px;border-radius:20px;text-align:center;max-width:400px;box-shadow:0 25px 60px rgba(0,0,0,0.3)}
-#invitePopup .popup-content h2{color:#d8b384;font-family:"Dancing Script",cursive;margin-bottom:20px}
-#invitePopup .popup-content p{margin-bottom:20px}
-#invitePopup .popup-content button{padding:12px 24px;border:none;border-radius:40px;background:#d8b384;color:#fff;font-size:16px;cursor:pointer}
+/* Stylish Popup Styles */
+#invitePopup{
+position:fixed;top:0;left:0;width:100%;height:100%;
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(8px);
+display:flex;justify-content:center;align-items:center;
+z-index:999;
+opacity:0;
+visibility:hidden;
+transition:opacity 0.5s ease, transform 0.5s ease;
+transform:scale(0.9);
+}
+#invitePopup.show{
+opacity:1;
+visibility:visible;
+transform:scale(1);
+}
+#invitePopup .popup-content{
+background:#fff;
+padding:40px 30px;
+border-radius:25px;
+text-align:center;
+max-width:400px;
+box-shadow:0 25px 60px rgba(0,0,0,0.35);
+animation:popupFade 0.6s ease forwards;
+}
+#invitePopup .popup-content h2{
+color:#d8b384;
+font-family:"Dancing Script",cursive;
+margin-bottom:20px;
+font-size:2.4rem;
+}
+#invitePopup .popup-content p{
+margin-bottom:20px;
+font-size:1.1rem;
+line-height:1.4;
+color:#333;
+}
+#invitePopup .popup-content button{
+padding:12px 24px;
+border:none;
+border-radius:40px;
+background:#d8b384;
+color:#fff;
+font-size:16px;
+cursor:pointer;
+transition:0.3s;
+}
+#invitePopup .popup-content button:hover{
+background:#b89b5e;
+}
+
+/* Animations */
+@keyframes popupFade{
+0%{opacity:0;transform:translateY(-20px)}
+100%{opacity:1;transform:translateY(0)}
+}
+@keyframes floatSlow{0%{transform:translateY(0)}50%{transform:translateY(-8px)}100%{transform:translateY(0)}}
+@keyframes floatHeader{0%{transform:translateY(0)}50%{transform:translateY(-4px)}100%{transform:translateY(0)}}
 </style>
 </head>
-
 <body>
 
 <!-- Invitation Popup -->
@@ -96,9 +147,7 @@ body{font-family:"Cormorant Garamond",serif;background:linear-gradient(135deg,#f
 </div>
 </div>
 
-<!-- Rest of your code (maps, RSVP, WhatsApp, Q&A, Thank You) remains exactly the same -->
-
-<!-- WhatsApp Card -->
+<!-- WhatsApp Photo Sharing Card -->
 <div class="rsvp-card">
 <div class="header-box">Share Your Photos</div>
 <p>You can share your wedding pictures with us via WhatsApp</p>
@@ -116,7 +165,7 @@ body{font-family:"Cormorant Garamond",serif;background:linear-gradient(135deg,#f
 </div>
 
 <script>
-// Show popup on page load
+// Stylish popup show
 window.addEventListener("load", () => {
 document.getElementById("invitePopup").classList.add("show");
 });
