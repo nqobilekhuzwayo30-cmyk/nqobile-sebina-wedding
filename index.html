@@ -52,6 +52,57 @@ body{font-family:"Cormorant Garamond",serif;background:linear-gradient(135deg,#f
 .footer{text-align:center;padding:30px;opacity:0.7}
 @keyframes floatSlow{0%{transform:translateY(0)}50%{transform:translateY(-8px)}100%{transform:translateY(0)}}
 @keyframes floatHeader{0%{transform:translateY(0)}50%{transform:translateY(-4px)}100%{transform:translateY(0)}}
+
+
+/* Invitation Popup */
+.invite-overlay{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.35);
+backdrop-filter:blur(8px);
+display:flex;
+align-items:center;
+justify-content:center;
+z-index:999;
+opacity:0;
+animation:overlayIn 0.6s forwards;
+}
+.invite-popup{
+background:#fff;
+border-radius:26px;
+padding:40px 30px;
+text-align:center;
+max-width:420px;
+box-shadow:0 40px 120px rgba(0,0,0,0.35);
+transform:scale(0.85);
+animation:popupIn 0.8s forwards;
+}
+.invite-popup h2{
+font-family:"Dancing Script",cursive;
+font-size:3rem;
+color:#2c1f1e;
+}
+.invite-popup p{
+margin-top:14px;
+font-size:1.2rem;
+color:#555;
+}
+
+@keyframes popupIn{
+0%{transform:scale(0.85)}
+60%{transform:scale(1.05)}
+100%{transform:scale(1)}
+}
+@keyframes overlayIn{
+to{opacity:1}
+}
+.fade-out{
+animation:popupOut 0.8s forwards;
+}
+@keyframes popupOut{
+to{opacity:0;transform:scale(1.05)}
+}
+
 </style>
 </head>
 
