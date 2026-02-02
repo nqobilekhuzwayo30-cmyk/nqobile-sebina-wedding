@@ -121,14 +121,14 @@ body{font-family:"Cormorant Garamond",serif;background:linear-gradient(135deg,#f
 <!-- RSVP -->
 <div class="section-card rsvp-card">
   <div class="header-box">RSVP</div>
-  <form id="rsvpForm" action="https://docs.google.com/forms/d/e/1FAIpQLScNfgJbch0Xz2KU7RaLt58EaeB2QoEcxtvL7_S8GzjflThXqg/formResponse" method="POST" target="rsvpIframe">
+  <form action="https://docs.google.com/forms/d/e/1FAIpQLScNfgJbch0Xz2KU7RaLt58EaeB2QoEcxtvL7_S8GzjflThXqg/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true; setTimeout(showThankYou,600);">
     <input name="entry.994600838" placeholder="Full Name" required>
     <input name="entry.793758707" placeholder="Phone Number" required>
     <textarea name="entry.282977896" placeholder="Message"></textarea>
     <button type="submit">Send RSVP</button>
   </form>
-  <iframe name="rsvpIframe" style="display:none"></iframe>
-  <div class="success" id="rsvpSuccess">
+  <iframe name="hidden_iframe" style="display:none"></iframe>
+  <div id="rsvpSuccess" class="success">
     <h2>Thank you!</h2>
     <p>Your RSVP has been received.</p>
   </div>
@@ -227,6 +227,15 @@ document.querySelectorAll(".qa-item h3").forEach(q=>{
     else ans.style.display="block"
   })
 })
+
+// RSVP thank you
+var submitted=false
+function showThankYou(){
+  if(submitted){
+    document.querySelector(".rsvp-card form").style.display="none"
+    document.getElementById("rsvpSuccess").style.display="block"
+  }
+}
 </script>
 </body>
 </html>
