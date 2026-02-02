@@ -52,9 +52,9 @@ body{font-family:"Cormorant Garamond",serif;background:linear-gradient(135deg,#f
 .success{display:none;padding:20px;color:#b89b5e}
 
 .qa-item{text-align:left;margin-bottom:20px}
-.qa-item h3{color:#d8b384;font-family:"Playfair Display",serif;cursor:pointer}
-.qa-item p{display:none;margin-top:12px;font-size:18px;line-height:1.6}
-.qa-item.open p{display:block}
+.qa-item h3{color:#d8b384;font-family:"Playfair Display",serif;cursor:pointer;margin-bottom:6px}
+.qa-item p{max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.4s ease;padding:0 0;margin:0 0 12px 0}
+.qa-item.open p{max-height:1000px;padding:0 0 12px 0}
 
 .footer{text-align:center;padding:30px;opacity:0.7}
 
@@ -63,7 +63,7 @@ body{font-family:"Cormorant Garamond",serif;background:linear-gradient(135deg,#f
 #invitePopup.show{opacity:1;visibility:visible}
 #invitePopup.fade-out{opacity:0;transition:0.8s}
 .popup-content{background:#fff;border-radius:26px;padding:40px 30px;text-align:center;max-width:420px;box-shadow:0 40px 120px rgba(0,0,0,0.35)}
-.popup-content h2{font-family:"Dancing Script",cursive;font-size:3rem;color:#2c1f1e}
+.popup-content h2{font-family:"Dancing Script",cursive;font-size:3rem;color:#d8b384} /* gold text */
 .popup-content p{margin-top:14px;font-size:1.2rem;color:#555}
 </style>
 </head>
@@ -193,23 +193,25 @@ body{font-family:"Cormorant Garamond",serif;background:linear-gradient(135deg,#f
 </div>
 
 <script>
+// Popup
 window.addEventListener("load",()=>{
 const popup=document.getElementById("invitePopup")
 popup.classList.add("show")
 setTimeout(()=>popup.classList.add("fade-out"),5000)
 })
 
+// Collapsible Q&A and FAQ
 document.querySelectorAll(".qa-item h3").forEach(h=>{
-h.addEventListener("click",()=>h.parentElement.classList.toggle("open"))
+  h.addEventListener("click",()=>h.parentElement.classList.toggle("open"))
 })
 
+// Countdown
 const days=document.getElementById("days")
 const hours=document.getElementById("hours")
 const minutes=document.getElementById("minutes")
 const seconds=document.getElementById("seconds")
 const title=document.getElementById("countdownTitle")
 const weddingDate=new Date("2026-03-27T13:00:00").getTime()
-
 setInterval(()=>{
 const diff=weddingDate-Date.now()
 if(diff<=0){
@@ -226,6 +228,7 @@ minutes.textContent=Math.floor(diff/60000%60)
 seconds.textContent=Math.floor(diff/1000%60)
 },1000)
 
+// RSVP
 let submitted=false
 function showThankYou(){
 if(submitted){
@@ -233,6 +236,7 @@ document.querySelector(".rsvp-card form").style.display="none"
 document.getElementById("rsvpSuccess").style.display="block"
 }}
 
+// WhatsApp
 document.getElementById("waOpen").onclick=()=>{
 const num="27673669644"
 const msg=encodeURIComponent("Hi! I’d like to share my wedding photos.")
