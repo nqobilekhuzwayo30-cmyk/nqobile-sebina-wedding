@@ -38,7 +38,6 @@ body{font-family:"Cormorant Garamond",serif;background:linear-gradient(135deg,#f
 .countdown-label{font-size:0.9rem;text-transform:uppercase;color:#666}
 
 .section-card{background:rgba(255,255,255,0.85);border-radius:20px;padding:25px;margin-bottom:50px;text-align:center;box-shadow:0 30px 80px rgba(0,0,0,0.3)}
-
 .header-box{display:inline-block;border:2px solid #d8b384;border-radius:14px;padding:14px 20px;font-family:"Playfair Display",serif;font-size:2rem;margin-bottom:25px}
 
 .map-frame{border-radius:22px;overflow:hidden;border:2px solid #d8b384}
@@ -53,8 +52,8 @@ body{font-family:"Cormorant Garamond",serif;background:linear-gradient(135deg,#f
 .success{display:none;padding:20px;color:#b89b5e}
 
 .qa-item{text-align:left;margin-bottom:20px}
-.qa-item h3{color:#d8b384;font-family:"Playfair Display",serif;cursor:pointer;display:flex;justify-content:space-between}
-.qa-item p{display:none;margin-top:12px;font-size:18px}
+.qa-item h3{color:#d8b384;font-family:"Playfair Display",serif;cursor:pointer}
+.qa-item p{display:none;margin-top:12px;font-size:18px;line-height:1.6}
 .qa-item.open p{display:block}
 
 .footer{text-align:center;padding:30px;opacity:0.7}
@@ -73,8 +72,8 @@ body{font-family:"Cormorant Garamond",serif;background:linear-gradient(135deg,#f
 
 <div id="invitePopup">
 <div class="popup-content">
-<h2>You are Invited</h2>
-<p>Nqobile and Sebina request the honor of your presence at their wedding.</p>
+<h2>You're Invited!</h2>
+<p>Nqobile & Sebina request the honor of your presence at their wedding.</p>
 </div>
 </div>
 
@@ -112,7 +111,7 @@ body{font-family:"Cormorant Garamond",serif;background:linear-gradient(135deg,#f
 
 <div class="section-card">
 <div class="header-box">Reception</div>
-<div class="address">Buena Vista Country Estate<br>Time <span class="time">15:00</span></div>
+<div class="address">Buena Vista Country Estate wedding venue<br>Time <span class="time">15:00</span></div>
 <div class="map-frame">
 <iframe src="https://www.google.com/maps?q=21%20Barnacle%20Rd%20Towerby%20Johannesburg%20South&output=embed"></iframe>
 </div>
@@ -128,37 +127,59 @@ body{font-family:"Cormorant Garamond",serif;background:linear-gradient(135deg,#f
 </form>
 <iframe name="hidden_iframe" style="display:none"></iframe>
 <div class="success" id="rsvpSuccess">
-<h2>Thank you</h2>
+<h2>Thank you!</h2>
 <p>Your RSVP has been received.</p>
 </div>
 </div>
 
 <div class="section-card">
 <div class="header-box">Share Your Photos</div>
-<p>Share your wedding pictures with us via WhatsApp.</p>
+<p>You can share your wedding pictures with us via WhatsApp.</p>
 <button id="waOpen">Open WhatsApp Chat</button>
 <div class="success" id="waSuccess">
-<h2>Thank you</h2>
-<p>WhatsApp chat opened.</p>
+<h2>Thank you!</h2>
+<p>WhatsApp chat opened. You can now share your photos.</p>
 </div>
 </div>
 
 <div class="section-card">
 <div class="header-box">Questions & Answers</div>
 
-<div class="qa-item"><h3>When is the RSVP deadline?</h3><p>Please RSVP by March 1st.</p></div>
-<div class="qa-item"><h3>Are kids welcome?</h3><p>Children will not be included in the ceremony or reception.</p></div>
-<div class="qa-item"><h3>Where should I park?</h3><p>Free parking is available at the venue.</p></div>
-<div class="qa-item"><h3>Is the wedding indoors or outdoors?</h3><p>The wedding and reception are indoors.</p></div>
-<div class="qa-item"><h3>Can we take pictures?</h3><p>Yes. Please avoid photos during the wedding talk.</p></div>
+<div class="qa-item"><h3>When is the RSVP deadline?</h3><p>Please RSVP by March 1st, so we can have an accurate headcount.</p></div>
+<div class="qa-item"><h3>Are kids welcome?</h3><p>As much as we love your little ones, we will not be including them in the ceremony or reception.</p></div>
+<div class="qa-item"><h3>Where should I park?</h3><p>There is plenty of free parking available near the entrance of the venue.</p></div>
+<div class="qa-item"><h3>Is the wedding indoors or outdoors?</h3><p>The wedding talk and reception will both be held indoors.</p></div>
+<div class="qa-item"><h3>Can we take pictures during the wedding?</h3><p>Yes, photos and videos are welcome. Avoid photos during the wedding talk and do not post online without permission from the bride and groom.</p></div>
+</div>
 
+<div class="section-card">
 <div class="header-box">FAQ</div>
 
-<div class="qa-item"><h3>Can I bring my own alcohol?</h3><p>No outside alcohol is permitted. The venue provides a full bar.</p></div>
-<div class="qa-item"><h3>Can I smoke or vape?</h3><p>Smoking and vaping are not permitted inside the venue.</p></div>
-<div class="qa-item"><h3>Can guests enter the kitchen?</h3><p>No. The kitchen is restricted to staff only.</p></div>
-<div class="qa-item"><h3>Mutual Respect</h3><p>The venue may stop the function if rules are broken.</p></div>
-<div class="qa-item"><h3>Guest Policy</h3><p>Only guests who RSVP and are on the list will be allowed entry.</p></div>
+<div class="qa-item">
+<h3>Can I bring my own alcohol?</h3>
+<p>No, outside alcohol is not permitted on the premises. Cars may be checked, and any drinks found in vehicles or concealed inside the venue will result in guests being asked to leave by Buena staff.</p>
+<p>The venue provides a fully stocked bar and refreshment service. Please bring cash if you would like to purchase additional drinks beyond those served during the celebration.</p>
+</div>
+
+<div class="qa-item">
+<h3>Can I smoke or vape?</h3>
+<p>Smoking and vaping are not permitted inside the venue. Buena Vista reserves the right to issue warnings to anyone violating smoke free zones and may close the Banqueting Hall if guests continue to disregard this rule. Guests who fail to comply may also be asked to leave by Buena staff.</p>
+</div>
+
+<div class="qa-item">
+<h3>Can guests enter the kitchen?</h3>
+<p>No. The kitchen is reserved exclusively for caterers, waiters, and serving staff. Guests are not permitted to enter or linger in this area. Anyone found doing so will be asked to stop and return to enjoying the wedding celebrations.</p>
+</div>
+
+<div class="qa-item">
+<h3>Mutual Respect</h3>
+<p>Buena Vista holds the right to stop any function at any given time if guests harass staff, access unauthorized areas, or misbehave and break venue rules.</p>
+</div>
+
+<div class="qa-item">
+<h3>Guest Policy</h3>
+<p>Entry to the venue is restricted to guests who have received an official invitation and submitted their RSVP. Admission will only be granted to those listed on the RSVP with confirmed responses and assigned table numbers. Please do not bring additional guests.</p>
+</div>
 </div>
 
 <div class="section-card">
@@ -173,29 +194,36 @@ body{font-family:"Cormorant Garamond",serif;background:linear-gradient(135deg,#f
 
 <script>
 window.addEventListener("load",()=>{
-const p=document.getElementById("invitePopup")
-p.classList.add("show")
-setTimeout(()=>p.classList.add("fade-out"),5000)
+const popup=document.getElementById("invitePopup")
+popup.classList.add("show")
+setTimeout(()=>popup.classList.add("fade-out"),5000)
 })
 
 document.querySelectorAll(".qa-item h3").forEach(h=>{
 h.addEventListener("click",()=>h.parentElement.classList.toggle("open"))
 })
 
-const d=document.getElementById("days")
-const h=document.getElementById("hours")
-const m=document.getElementById("minutes")
-const s=document.getElementById("seconds")
-const t=document.getElementById("countdownTitle")
-const date=new Date("2026-03-27T13:00:00").getTime()
+const days=document.getElementById("days")
+const hours=document.getElementById("hours")
+const minutes=document.getElementById("minutes")
+const seconds=document.getElementById("seconds")
+const title=document.getElementById("countdownTitle")
+const weddingDate=new Date("2026-03-27T13:00:00").getTime()
 
 setInterval(()=>{
-const diff=date-Date.now()
-if(diff<=0){d.textContent=h.textContent=m.textContent=s.textContent=0;t.textContent="The wedding has started";return}
-d.textContent=Math.floor(diff/86400000)
-h.textContent=Math.floor(diff/3600000%24)
-m.textContent=Math.floor(diff/60000%60)
-s.textContent=Math.floor(diff/1000%60)
+const diff=weddingDate-Date.now()
+if(diff<=0){
+days.textContent=0
+hours.textContent=0
+minutes.textContent=0
+seconds.textContent=0
+title.textContent="The wedding has started"
+return
+}
+days.textContent=Math.floor(diff/86400000)
+hours.textContent=Math.floor(diff/3600000%24)
+minutes.textContent=Math.floor(diff/60000%60)
+seconds.textContent=Math.floor(diff/1000%60)
 },1000)
 
 let submitted=false
@@ -207,8 +235,8 @@ document.getElementById("rsvpSuccess").style.display="block"
 
 document.getElementById("waOpen").onclick=()=>{
 const num="27673669644"
-const msg=encodeURIComponent("Hi! I would like to share wedding photos.")
-window.open(`https://wa.me/${num}?text=${msg}`,"_blank")
+const msg=encodeURIComponent("Hi! I’d like to share my wedding photos.")
+window.open("https://wa.me/"+num+"?text="+msg,"_blank")
 document.getElementById("waSuccess").style.display="block"
 }
 </script>
