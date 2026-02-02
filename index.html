@@ -100,6 +100,48 @@ body{font-family:"Cormorant Garamond",serif;background:linear-gradient(135deg,#f
 </div>
 </div>
 
+<div class="map-container">
+<div class="header-box">Wedding Talk</div>
+<div class="address">Kibler Park Kingdom Hall<br>Time <span class="time">13:00</span></div>
+<div class="map-frame">
+<iframe src="https://www.google.com/maps?q=1%20Milner%20Drive%20Kibler%20Park%20Johannesburg&output=embed"></iframe>
+</div>
+</div>
+
+<div class="map-container">
+<div class="header-box">Reception</div>
+<div class="address">Buena Vista Country Estate wedding venue<br>Time <span class="time">15:00</span></div>
+<div class="map-frame">
+<iframe src="https://www.google.com/maps?q=21%20Barnacle%20Rd%20Towerby%20Johannesburg%20South&output=embed"></iframe>
+</div>
+</div>
+
+<div class="rsvp-card">
+<div class="header-box">RSVP</div>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLScNfgJbch0Xz2KU7RaLt58EaeB2QoEcxtvL7_S8GzjflThXqg/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;setTimeout(showThankYou,600)">
+<input name="entry.994600838" placeholder="Full Name" required>
+<input name="entry.793758707" placeholder="Phone Number" required>
+<input name="entry.458040034" value="1" readonly>
+<textarea name="entry.282977896" placeholder="Message"></textarea>
+<button type="submit">Send RSVP</button>
+</form>
+<iframe name="hidden_iframe" style="display:none"></iframe>
+<div class="success">
+<h2>Thank you</h2>
+<p>Your RSVP has been received.</p>
+</div>
+</div>
+
+<div class="rsvp-card">
+<div class="header-box">Share Your Photos</div>
+<p>You can share your wedding pictures with us via WhatsApp</p>
+<button id="waOpen">Open WhatsApp Chat</button>
+<div id="waSuccess" class="success">
+<h2>Thank you</h2>
+<p>WhatsApp chat opened. You can now share your photos.</p>
+</div>
+</div>
+
 <div class="qna">
 <div class="header-box">Questions & Answers</div>
 
@@ -169,6 +211,21 @@ hoursEl.textContent=Math.floor((diff/3600000)%24)
 minutesEl.textContent=Math.floor((diff/60000)%60)
 secondsEl.textContent=Math.floor((diff/1000)%60)
 },1000)
+
+let submitted=false
+function showThankYou(){
+if(submitted){
+document.querySelector(".rsvp-card form").style.display="none"
+document.querySelector(".rsvp-card .success").style.display="block"
+}}
+
+document.getElementById("waOpen").addEventListener("click",()=>{
+const number="27673669644"
+const msg=encodeURIComponent("Hi! I would like to share wedding photos.")
+window.open(`https://wa.me/${number}?text=${msg}`,"_blank")
+document.getElementById("waOpen").style.display="none"
+document.getElementById("waSuccess").style.display="block"
+})
 </script>
 
 </body>
