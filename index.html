@@ -55,11 +55,10 @@ body{font-family:"Cormorant Garamond",serif;background:linear-gradient(135deg,#f
 
 @keyframes floatSlow{0%{transform:translateY(0)}50%{transform:translateY(-8px)}100%{transform:translateY(0)}}
 
-/* Popup */
+/* Invitation Popup */
 #invitePopup{position:fixed;inset:0;background:rgba(0,0,0,0.45);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;z-index:999;opacity:0;visibility:hidden}
 #invitePopup.show{opacity:1;visibility:visible}
 #invitePopup.fade-out{opacity:0;transition:0.8s}
-
 .popup-content{background:#fff;border-radius:26px;padding:40px 30px;text-align:center;max-width:420px;box-shadow:0 40px 120px rgba(0,0,0,0.35);animation:popupIn 0.8s forwards}
 @keyframes popupIn{0%{transform:scale(0.85)}60%{transform:scale(1.05)}100%{transform:scale(1)}}
 </style>
@@ -98,6 +97,50 @@ body{font-family:"Cormorant Garamond",serif;background:linear-gradient(135deg,#f
 </div>
 </div>
 
+<div class="map-container">
+<div class="header-box">Wedding Talk</div>
+<div class="address">Kibler Park Kingdom Hall<br>Time <span class="time">13:00</span></div>
+<div class="map-frame">
+<iframe src="https://www.google.com/maps?q=1%20Milner%20Drive%20Kibler%20Park%20Johannesburg&output=embed"></iframe>
+</div>
+</div>
+
+<div class="map-container">
+<div class="header-box">Reception</div>
+<div class="address">Buena Vista Country Estate<br>Time <span class="time">15:00</span></div>
+<div class="map-frame">
+<iframe src="https://www.google.com/maps?q=21%20Barnacle%20Rd%20Towerby%20Johannesburg%20South&output=embed"></iframe>
+</div>
+</div>
+
+<div class="rsvp-card">
+<div class="header-box">RSVP</div>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLScNfgJbch0Xz2KU7RaLt58EaeB2QoEcxtvL7_S8GzjflThXqg/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;setTimeout(showThankYou,600)">
+<input name="entry.994600838" placeholder="Full Name" required>
+<input name="entry.793758707" placeholder="Phone Number" required>
+<input name="entry.458040034" value="1" readonly>
+<textarea name="entry.282977896" placeholder="Message"></textarea>
+<button type="submit">Send RSVP</button>
+</form>
+<iframe name="hidden_iframe" style="display:none"></iframe>
+<div class="success"><h2>Thank you</h2><p>Your RSVP has been received.</p></div>
+</div>
+
+<div class="rsvp-card">
+<div class="header-box">Share Your Photos</div>
+<p>Share your wedding pictures with us on WhatsApp</p>
+<button id="waOpen">Open WhatsApp Chat</button>
+<div id="waSuccess" class="success"><h2>Thank you</h2><p>WhatsApp chat opened.</p></div>
+</div>
+
+<div class="qna">
+<div class="header-box">Questions and Answers</div>
+<p><strong>RSVP deadline</strong><br>March 1st</p>
+<p><strong>Kids</strong><br>No children invited</p>
+<p><strong>Parking</strong><br>Free parking available</p>
+<p><strong>Photos</strong><br>No photos during the wedding talk</p>
+</div>
+
 <div class="thank-you">
 <div class="header-box">Thank You</div>
 <p>We cannot wait to celebrate with you.</p>
@@ -112,9 +155,7 @@ body{font-family:"Cormorant Garamond",serif;background:linear-gradient(135deg,#f
 window.addEventListener("load",()=>{
 const popup=document.getElementById("invitePopup")
 popup.classList.add("show")
-setTimeout(()=>{
-popup.classList.add("fade-out")
-},5000)
+setTimeout(()=>popup.classList.add("fade-out"),5000)
 })
 
 const daysEl=document.getElementById("days")
@@ -140,6 +181,21 @@ hoursEl.textContent=Math.floor((diff/3600000)%24)
 minutesEl.textContent=Math.floor((diff/60000)%60)
 secondsEl.textContent=Math.floor((diff/1000)%60)
 },1000)
+
+let submitted=false
+function showThankYou(){
+if(submitted){
+document.querySelector(".rsvp-card form").style.display="none"
+document.querySelector(".rsvp-card .success").style.display="block"
+}}
+
+document.getElementById("waOpen").addEventListener("click",()=>{
+const number="27673669644"
+const msg=encodeURIComponent("Hi I would like to share wedding photos")
+window.open(`https://wa.me/${number}?text=${msg}`,"_blank")
+document.getElementById("waOpen").style.display="none"
+document.getElementById("waSuccess").style.display="block"
+})
 </script>
 
 </body>
