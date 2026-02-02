@@ -19,7 +19,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Cormorant+Garamond:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;user-select:none}
+*{margin:0;padding:0;box-sizing:border-box;user-select:none;scroll-behavior:smooth}
 body{font-family:"Cormorant Garamond",serif;background:linear-gradient(135deg,#f7f2f3,#e8d9cf);min-height:100vh;overflow-x:hidden}
 .navbar{background:rgba(255,255,255,0.95);backdrop-filter:blur(16px);padding:18px 0;position:sticky;top:0;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,0.1);z-index:10}
 .logo{font-family:"Dancing Script",cursive;font-size:2.4rem;color:#d8b384;font-weight:700}
@@ -63,7 +63,6 @@ body{font-family:"Cormorant Garamond",serif;background:linear-gradient(135deg,#f
 @keyframes popupOut{to{opacity:0;transform:scale(1.05)}}
 </style>
 </head>
-
 <body>
 
 <!-- Popup Invitation -->
@@ -129,7 +128,7 @@ body{font-family:"Cormorant Garamond",serif;background:linear-gradient(135deg,#f
   <!-- RSVP Form -->
   <div class="rsvp-card">
     <div class="header-box">RSVP</div>
-    <form action="https://docs.google.com/forms/d/e/1FAIpQLScNfgJbch0Xz2KU7RaLt58EaeB2QoEcxtvL7_S8GzjflThXqg/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true; setTimeout(showThankYou,600);">
+    <form action="https://docs.google.com/forms/d/e/1FAIpQLScNfgJbch0Xz2KU7RaLt58EaeB2QoEcxtvL7_S8GzjflThXqg/formResponse" method="POST" target="hidden_iframe" onsubmit="submittedRSVP=true; setTimeout(showRSVPThankYou,600);">
       <input name="entry.994600838" placeholder="Full Name" required>
       <input name="entry.793758707" placeholder="Phone Number" required>
       <input name="entry.458040034" value="1" readonly>
@@ -162,16 +161,6 @@ body{font-family:"Cormorant Garamond",serif;background:linear-gradient(135deg,#f
     <div class="qa-item"><h3>Where should I park?</h3><div class="answer"><p>There is plenty of free parking available near the entrance of the venue.</p></div></div>
     <div class="qa-item"><h3>Is the wedding indoors or outdoors?</h3><div class="answer"><p>The wedding talk and reception will both be held indoors.</p></div></div>
     <div class="qa-item"><h3>Can we take pictures during the wedding?</h3><div class="answer"><p>Yes, photos and videos are welcome. Avoid photos during the wedding talk and do not post online without permission from the bride and groom.</p></div></div>
-  </div>
-
-  <!-- FAQ Section -->
-  <div class="qna">
-    <div class="header-box">FAQ</div>
-    <div class="qa-item"><h3>Can I bring my own alcohol?</h3><div class="answer"><p>No, outside alcohol is not permitted. The venue provides a fully stocked bar.</p></div></div>
-    <div class="qa-item"><h3>Can I smoke or vape?</h3><div class="answer"><p>Smoking and vaping are not permitted inside the venue. Staff may enforce this rule.</p></div></div>
-    <div class="qa-item"><h3>Can guests enter the kitchen?</h3><div class="answer"><p>No. The kitchen is reserved for catering staff only.</p></div></div>
-    <div class="qa-item"><h3>MUTUAL RESPECT</h3><div class="answer"><p>Guests must respect venue rules. Misbehavior may result in removal.</p></div></div>
-    <div class="qa-item"><h3>Guest Policy</h3><div class="answer"><p>Entry is only for invited guests with RSVP confirmation. No additional guests allowed.</p></div></div>
   </div>
 
   <!-- Thank You -->
@@ -208,12 +197,12 @@ setInterval(()=>{
   seconds.textContent=Math.floor(diff/1000%60)
 },1000)
 
-// RSVP thank-you
-var submitted=false
-function showThankYou(){
-  if(submitted){
-    document.querySelectorAll(".rsvp-card form").forEach(f=>f.style.display="none")
-    document.querySelectorAll(".success").forEach(s=>s.style.display="block")
+// RSVP Thank You
+var submittedRSVP=false
+function showRSVPThankYou(){
+  if(submittedRSVP){
+    document.querySelector(".rsvp-card form").style.display="none"
+    document.getElementById("rsvpSuccess").style.display="block"
   }
 }
 
@@ -235,11 +224,12 @@ setTimeout(()=>{
   setTimeout(()=>{document.getElementById("inviteOverlay").style.display="none"},800)
 },5000)
 
-// Q&A and FAQ toggle
+// Q&A toggle
 document.querySelectorAll(".qa-item h3").forEach(h=>{
   h.addEventListener("click",()=>{
     const ans=h.nextElementSibling
     ans.style.display=(ans.style.display==="block")?"none":"block"
+    ans.scrollIntoView({behavior:"smooth",block:"start"})
   })
 })
 </script>
