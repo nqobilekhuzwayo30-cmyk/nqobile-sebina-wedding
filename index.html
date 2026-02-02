@@ -121,13 +121,13 @@ body{font-family:"Cormorant Garamond",serif;background:linear-gradient(135deg,#f
 <!-- RSVP -->
 <div class="section-card rsvp-card">
   <div class="header-box">RSVP</div>
-  <form id="rsvpForm" action="https://docs.google.com/forms/d/e/1FAIpQLScNfgJbch0Xz2KU7RaLt58EaeB2QoEcxtvL7_S8GzjflThXqg/formResponse" method="POST" target="hidden_iframe">
+  <form id="rsvpForm" action="https://docs.google.com/forms/d/e/1FAIpQLScNfgJbch0Xz2KU7RaLt58EaeB2QoEcxtvL7_S8GzjflThXqg/formResponse" method="POST" target="rsvpIframe">
     <input name="entry.994600838" placeholder="Full Name" required>
     <input name="entry.793758707" placeholder="Phone Number" required>
     <textarea name="entry.282977896" placeholder="Message"></textarea>
     <button type="submit">Send RSVP</button>
   </form>
-  <iframe name="hidden_iframe" style="display:none"></iframe>
+  <iframe name="rsvpIframe" style="display:none"></iframe>
   <div class="success" id="rsvpSuccess">
     <h2>Thank you!</h2>
     <p>Your RSVP has been received.</p>
@@ -208,15 +208,6 @@ setInterval(()=>{
   minutes.textContent=Math.floor(diff/60000%60)
   seconds.textContent=Math.floor(diff/1000%60)
 },1000)
-
-// RSVP
-const rsvpForm=document.getElementById("rsvpForm")
-rsvpForm.addEventListener("submit",function(e){
-  e.preventDefault()
-  rsvpForm.submit()
-  rsvpForm.style.display="none"
-  document.getElementById("rsvpSuccess").style.display="block"
-})
 
 // WhatsApp
 document.getElementById("waOpen").onclick=()=>{
