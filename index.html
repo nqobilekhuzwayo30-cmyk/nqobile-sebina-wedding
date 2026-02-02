@@ -144,6 +144,17 @@ body{font-family:"Cormorant Garamond",serif;background:linear-gradient(135deg,#f
   </div>
 </div>
 
+<!-- Photos Card -->
+<div class="section-card">
+  <div class="header-box">Share Your Photos</div>
+  <p>You can share your wedding pictures with us via WhatsApp.</p>
+  <button id="waOpen" class="wa-button">Open WhatsApp Chat</button>
+  <div class="success" id="waSuccess">
+    <h2>Thank you!</h2>
+    <p>WhatsApp chat opened. You can now share your photos.</p>
+  </div>
+</div>
+
 <!-- Q&A -->
 <div class="qna">
   <div class="header-box">Questions & Answers</div>
@@ -214,13 +225,14 @@ setInterval(()=>{
   seconds.textContent=Math.floor(diff/1000%60)
 },1000)
 
-// RSVP thank you using hidden iframe (mimics Google Forms)
-var submitted=false
-function showThankYou(){
-  if(submitted){
-    document.querySelector(".rsvp-card form").style.display="none"
-    document.getElementById("rsvpSuccess").style.display="block"
-  }
+// WhatsApp
+document.getElementById("waOpen").onclick=()=>{
+  const num="27673669644"
+  const msg=encodeURIComponent("Hi! I’d like to share my wedding photos.")
+  const isMobile=/Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent)
+  const link=isMobile?`https://wa.me/${num}?text=${msg}`:`https://web.whatsapp.com/send?phone=${num}&text=${msg}`
+  window.open(link,"_blank")
+  document.getElementById("waSuccess").style.display="block"
 }
 
 // Q&A & FAQ collapse
@@ -231,6 +243,15 @@ document.querySelectorAll(".qa-item h3").forEach(q=>{
     else ans.style.display="block"
   })
 })
+
+// RSVP thank you
+var submitted=false
+function showThankYou(){
+  if(submitted){
+    document.querySelector(".rsvp-card form").style.display="none"
+    document.getElementById("rsvpSuccess").style.display="block"
+  }
+}
 </script>
 </body>
 </html>
