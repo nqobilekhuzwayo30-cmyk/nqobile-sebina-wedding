@@ -41,9 +41,13 @@ body{font-family:"Cormorant Garamond",serif;background:linear-gradient(135deg,#f
 
 .qna,.thank-you{background:rgba(255,255,255,0.85);border-radius:20px;padding:25px;margin-bottom:50px;text-align:center;box-shadow:0 30px 80px rgba(0,0,0,0.3)}
 
-.qa-item{margin-bottom:30px}
-.qa-item h3{color:#d8b384;font-family:"Playfair Display",serif}
-.qa-item p{font-size:18px}
+.qa-item{margin-bottom:22px;text-align:left}
+.qa-item h3{color:#d8b384;font-family:"Playfair Display",serif;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.qa-item p{font-size:18px;margin-top:12px;display:none}
+.qa-item.open p{display:block}
+
+.faq-arrow{transition:transform 0.3s}
+.qa-item.open .faq-arrow{transform:rotate(180deg)}
 
 .footer{text-align:center;padding:30px;opacity:0.7}
 
@@ -61,97 +65,97 @@ body{font-family:"Cormorant Garamond",serif;background:linear-gradient(135deg,#f
 <body>
 
 <div id="invitePopup">
-  <div class="popup-content">
-    <h2>You are Invited</h2>
-    <p>Nqobile and Sebina request the honor of your presence.</p>
-  </div>
+<div class="popup-content">
+<h2>You are Invited</h2>
+<p>Nqobile and Sebina request the honor of your presence.</p>
+</div>
 </div>
 
 <nav class="navbar">
-  <div class="logo">Nqobile <i class="fas fa-heart"></i> Sebina</div>
+<div class="logo">Nqobile <i class="fas fa-heart"></i> Sebina</div>
 </nav>
 
 <div class="container">
 
 <div class="hero-card">
-  <h1 class="hero-names">Nqobile & Sebina</h1>
-  <p class="hero-date">Friday, March 27, 2026</p>
-  <video autoplay muted loop playsinline class="invite-video">
-    <source src="vid.mp4" type="video/mp4">
-  </video>
+<h1 class="hero-names">Nqobile & Sebina</h1>
+<p class="hero-date">Friday, March 27, 2026</p>
+<video autoplay muted loop playsinline class="invite-video">
+<source src="vid.mp4" type="video/mp4">
+</video>
 </div>
 
 <div class="countdown-card">
-  <div class="countdown-title" id="countdownTitle">The Countdown</div>
-  <div class="countdown">
-    <div class="countdown-item"><div class="countdown-number" id="days">0</div><div class="countdown-label">Days</div></div>
-    <div class="countdown-item"><div class="countdown-number" id="hours">0</div><div class="countdown-label">Hours</div></div>
-    <div class="countdown-item"><div class="countdown-number" id="minutes">0</div><div class="countdown-label">Minutes</div></div>
-    <div class="countdown-item"><div class="countdown-number" id="seconds">0</div><div class="countdown-label">Seconds</div></div>
-  </div>
+<div class="countdown-title" id="countdownTitle">The Countdown</div>
+<div class="countdown">
+<div class="countdown-item"><div class="countdown-number" id="days">0</div><div class="countdown-label">Days</div></div>
+<div class="countdown-item"><div class="countdown-number" id="hours">0</div><div class="countdown-label">Hours</div></div>
+<div class="countdown-item"><div class="countdown-number" id="minutes">0</div><div class="countdown-label">Minutes</div></div>
+<div class="countdown-item"><div class="countdown-number" id="seconds">0</div><div class="countdown-label">Seconds</div></div>
+</div>
 </div>
 
 <div class="qna">
-  <div class="header-box">Questions & Answers</div>
+<div class="header-box">Questions & Answers</div>
 
-  <div class="qa-item">
-    <h3>When is the RSVP deadline?</h3>
-    <p>Please RSVP by March 1st, so we can have an accurate headcount.</p>
-  </div>
+<div class="qa-item">
+<h3>When is the RSVP deadline?<span class="faq-arrow">▼</span></h3>
+<p>Please RSVP by March 1st, so we can have an accurate headcount.</p>
+</div>
 
-  <div class="qa-item">
-    <h3>Are kids welcome?</h3>
-    <p>As much as we love your little ones, they will not be included in the ceremony or reception.</p>
-  </div>
+<div class="qa-item">
+<h3>Are kids welcome?<span class="faq-arrow">▼</span></h3>
+<p>As much as we love your little ones, they will not be included in the ceremony or reception.</p>
+</div>
 
-  <div class="qa-item">
-    <h3>Where should I park?</h3>
-    <p>Free parking is available near the venue entrance.</p>
-  </div>
+<div class="qa-item">
+<h3>Where should I park?<span class="faq-arrow">▼</span></h3>
+<p>Free parking is available near the venue entrance.</p>
+</div>
 
-  <div class="qa-item">
-    <h3>Is the wedding indoors or outdoors?</h3>
-    <p>The ceremony and reception will be held indoors.</p>
-  </div>
+<div class="qa-item">
+<h3>Is the wedding indoors or outdoors?<span class="faq-arrow">▼</span></h3>
+<p>The ceremony and reception will be held indoors.</p>
+</div>
 
-  <div class="qa-item">
-    <h3>Can we take pictures during the wedding?</h3>
-    <p>Photos and videos are welcome. Please avoid photos during the ceremony and do not post online without permission.</p>
-  </div>
+<div class="qa-item">
+<h3>Can we take pictures during the wedding?<span class="faq-arrow">▼</span></h3>
+<p>Photos and videos are welcome. Please avoid photos during the ceremony and do not post online without permission.</p>
+</div>
 
-  <div class="header-box">FAQ</div>
+<div class="header-box">FAQ</div>
 
-  <div class="qa-item">
-    <h3>Can I bring my own alcohol?</h3>
-    <p>No. Outside alcohol is not permitted. Cars may be checked. Any alcohol found may result in guests being asked to leave by Buena Vista staff.</p>
-    <p>The venue provides a fully stocked bar. Please bring cash if you wish to purchase additional drinks.</p>
-  </div>
+<div class="qa-item">
+<h3>Can I bring my own alcohol?<span class="faq-arrow">▼</span></h3>
+<p>No. Outside alcohol is not permitted. Cars may be checked. Any alcohol found may result in guests being asked to leave by Buena Vista staff.</p>
+<p>The venue provides a fully stocked bar. Please bring cash if you wish to purchase additional drinks.</p>
+</div>
 
-  <div class="qa-item">
-    <h3>Can I smoke or vape?</h3>
-    <p>Smoking and vaping are not permitted inside the venue. Buena Vista may issue warnings or ask guests to leave if rules are ignored.</p>
-  </div>
+<div class="qa-item">
+<h3>Can I smoke or vape?<span class="faq-arrow">▼</span></h3>
+<p>Smoking and vaping are not permitted inside the venue. Guests may be asked to leave if rules are ignored.</p>
+</div>
 
-  <div class="qa-item">
-    <h3>Can guests enter the kitchen?</h3>
-    <p>No. The kitchen is reserved for staff only. Guests entering this area will be asked to return to the celebration.</p>
-  </div>
+<div class="qa-item">
+<h3>Can guests enter the kitchen?<span class="faq-arrow">▼</span></h3>
+<p>No. The kitchen is reserved for staff only. Guests entering this area will be asked to return to the celebration.</p>
+</div>
 
-  <div class="qa-item">
-    <h3>Mutual Respect</h3>
-    <p>Buena Vista reserves the right to stop the function if staff are harassed, restricted areas are accessed, or venue rules are broken.</p>
-  </div>
+<div class="qa-item">
+<h3>Mutual Respect<span class="faq-arrow">▼</span></h3>
+<p>Buena Vista may stop the function if staff are harassed, restricted areas are accessed, or venue rules are broken.</p>
+</div>
 
-  <div class="qa-item">
-    <h3>Guest Policy</h3>
-    <p>Entry is limited to guests who received an official invitation and submitted an RSVP. Only confirmed guests with assigned table numbers will be allowed entry. Please do not bring unregistered guests or plus ones.</p>
-  </div>
+<div class="qa-item">
+<h3>Guest Policy<span class="faq-arrow">▼</span></h3>
+<p>Entry is limited to guests who received an official invitation and submitted an RSVP. Only confirmed guests with assigned table numbers will be allowed entry.</p>
+</div>
 </div>
 
 <div class="thank-you">
-  <div class="header-box">Thank You</div>
-  <p>We cannot wait to celebrate with you.</p>
-  <img src="00.jpg" style="max-width:200px;border-radius:12px">
+<div class="header-box">Thank You</div>
+<p>We cannot wait to celebrate with you.</p>
+<img src="00.jpg" style="max-width:200px;border-radius:12px">
 </div>
 
 <footer class="footer">Made with love by Nqobile and Sebina</footer>
@@ -160,9 +164,15 @@ body{font-family:"Cormorant Garamond",serif;background:linear-gradient(135deg,#f
 
 <script>
 window.addEventListener("load",()=>{
-  const popup=document.getElementById("invitePopup")
-  popup.classList.add("show")
-  setTimeout(()=>popup.classList.add("fade-out"),5000)
+const popup=document.getElementById("invitePopup")
+popup.classList.add("show")
+setTimeout(()=>popup.classList.add("fade-out"),5000)
+})
+
+document.querySelectorAll(".qa-item h3").forEach(h=>{
+h.addEventListener("click",()=>{
+h.parentElement.classList.toggle("open")
+})
 })
 
 const daysEl=document.getElementById("days")
@@ -174,19 +184,19 @@ const titleEl=document.getElementById("countdownTitle")
 const weddingDate=new Date("2026-03-27T13:00:00").getTime()
 
 setInterval(()=>{
-  const diff=weddingDate-Date.now()
-  if(diff<=0){
-    daysEl.textContent=0
-    hoursEl.textContent=0
-    minutesEl.textContent=0
-    secondsEl.textContent=0
-    titleEl.textContent="The wedding has started"
-    return
-  }
-  daysEl.textContent=Math.floor(diff/86400000)
-  hoursEl.textContent=Math.floor((diff/3600000)%24)
-  minutesEl.textContent=Math.floor((diff/60000)%60)
-  secondsEl.textContent=Math.floor((diff/1000)%60)
+const diff=weddingDate-Date.now()
+if(diff<=0){
+daysEl.textContent=0
+hoursEl.textContent=0
+minutesEl.textContent=0
+secondsEl.textContent=0
+titleEl.textContent="The wedding has started"
+return
+}
+daysEl.textContent=Math.floor(diff/86400000)
+hoursEl.textContent=Math.floor((diff/3600000)%24)
+minutesEl.textContent=Math.floor((diff/60000)%60)
+secondsEl.textContent=Math.floor((diff/1000)%60)
 },1000)
 </script>
 
