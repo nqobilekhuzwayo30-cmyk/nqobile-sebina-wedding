@@ -51,11 +51,14 @@ body{font-family:"Cormorant Garamond",serif;background:linear-gradient(135deg,#f
 .rsvp-card button{width:100%;padding:16px;border:none;border-radius:40px;background:#d8b384;font-size:16px;cursor:pointer}
 .success{display:none;padding:20px;color:#b89b5e}
 
+.qa-item{margin-bottom:30px}
+.qa-item h3{color:#d8b384;font-family:"Playfair Display",serif}
+
 .footer{text-align:center;padding:30px;opacity:0.7}
 
 @keyframes floatSlow{0%{transform:translateY(0)}50%{transform:translateY(-8px)}100%{transform:translateY(0)}}
 
-/* Invitation Popup */
+/* Popup */
 #invitePopup{position:fixed;inset:0;background:rgba(0,0,0,0.45);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;z-index:999;opacity:0;visibility:hidden}
 #invitePopup.show{opacity:1;visibility:visible}
 #invitePopup.fade-out{opacity:0;transition:0.8s}
@@ -97,48 +100,33 @@ body{font-family:"Cormorant Garamond",serif;background:linear-gradient(135deg,#f
 </div>
 </div>
 
-<div class="map-container">
-<div class="header-box">Wedding Talk</div>
-<div class="address">Kibler Park Kingdom Hall<br>Time <span class="time">13:00</span></div>
-<div class="map-frame">
-<iframe src="https://www.google.com/maps?q=1%20Milner%20Drive%20Kibler%20Park%20Johannesburg&output=embed"></iframe>
-</div>
-</div>
-
-<div class="map-container">
-<div class="header-box">Reception</div>
-<div class="address">Buena Vista Country Estate<br>Time <span class="time">15:00</span></div>
-<div class="map-frame">
-<iframe src="https://www.google.com/maps?q=21%20Barnacle%20Rd%20Towerby%20Johannesburg%20South&output=embed"></iframe>
-</div>
-</div>
-
-<div class="rsvp-card">
-<div class="header-box">RSVP</div>
-<form action="https://docs.google.com/forms/d/e/1FAIpQLScNfgJbch0Xz2KU7RaLt58EaeB2QoEcxtvL7_S8GzjflThXqg/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;setTimeout(showThankYou,600)">
-<input name="entry.994600838" placeholder="Full Name" required>
-<input name="entry.793758707" placeholder="Phone Number" required>
-<input name="entry.458040034" value="1" readonly>
-<textarea name="entry.282977896" placeholder="Message"></textarea>
-<button type="submit">Send RSVP</button>
-</form>
-<iframe name="hidden_iframe" style="display:none"></iframe>
-<div class="success"><h2>Thank you</h2><p>Your RSVP has been received.</p></div>
-</div>
-
-<div class="rsvp-card">
-<div class="header-box">Share Your Photos</div>
-<p>Share your wedding pictures with us on WhatsApp</p>
-<button id="waOpen">Open WhatsApp Chat</button>
-<div id="waSuccess" class="success"><h2>Thank you</h2><p>WhatsApp chat opened.</p></div>
-</div>
-
 <div class="qna">
-<div class="header-box">Questions and Answers</div>
-<p><strong>RSVP deadline</strong><br>March 1st</p>
-<p><strong>Kids</strong><br>No children invited</p>
-<p><strong>Parking</strong><br>Free parking available</p>
-<p><strong>Photos</strong><br>No photos during the wedding talk</p>
+<div class="header-box">Questions & Answers</div>
+
+<div class="qa-item">
+<h3>When is the RSVP deadline?</h3>
+<p>Please RSVP by March 1st, so we can have an accurate headcount.</p>
+</div>
+
+<div class="qa-item">
+<h3>Are kids welcome?</h3>
+<p>As much as we love your little ones, we will not be including them in the ceremony or reception.</p>
+</div>
+
+<div class="qa-item">
+<h3>Where should I park?</h3>
+<p>There is plenty of free parking available near the entrance of the venue.</p>
+</div>
+
+<div class="qa-item">
+<h3>Is the wedding indoors or outdoors?</h3>
+<p>The wedding talk and reception will both be held indoors.</p>
+</div>
+
+<div class="qa-item">
+<h3>Can we take pictures during the wedding?</h3>
+<p>Yes, photos and videos are welcome. Avoid photos during the wedding talk and do not post online without permission from the bride and groom.</p>
+</div>
 </div>
 
 <div class="thank-you">
@@ -181,21 +169,6 @@ hoursEl.textContent=Math.floor((diff/3600000)%24)
 minutesEl.textContent=Math.floor((diff/60000)%60)
 secondsEl.textContent=Math.floor((diff/1000)%60)
 },1000)
-
-let submitted=false
-function showThankYou(){
-if(submitted){
-document.querySelector(".rsvp-card form").style.display="none"
-document.querySelector(".rsvp-card .success").style.display="block"
-}}
-
-document.getElementById("waOpen").addEventListener("click",()=>{
-const number="27673669644"
-const msg=encodeURIComponent("Hi I would like to share wedding photos")
-window.open(`https://wa.me/${number}?text=${msg}`,"_blank")
-document.getElementById("waOpen").style.display="none"
-document.getElementById("waSuccess").style.display="block"
-})
 </script>
 
 </body>
