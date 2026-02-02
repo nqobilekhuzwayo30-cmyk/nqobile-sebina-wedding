@@ -51,10 +51,10 @@ body{font-family:"Cormorant Garamond",serif;background:linear-gradient(135deg,#f
 
 .success{display:none;padding:20px;color:#b89b5e}
 
-/* Q&A and FAQ permanently open, styled */
-.qa-item{margin-bottom:18px;text-align:left;background:#fff3e0;padding:14px 20px;border-radius:12px;box-shadow:0 5px 15px rgba(0,0,0,0.1)}
+/* Q&A and FAQ always visible, centered */
+.qa-item{margin-bottom:18px;text-align:center;background:#fff3e0;padding:14px 20px;border-radius:12px;box-shadow:0 5px 15px rgba(0,0,0,0.1)}
 .qa-item h3{color:#d8b384;font-family:"Playfair Display",serif;margin-bottom:6px;font-size:1.2rem}
-.qa-item .answer{padding-top:6px;font-size:1rem;color:#333}
+.qa-item .answer{padding-top:6px;font-size:1rem;color:#333;text-align:center}
 
 .footer{text-align:center;padding:30px;opacity:0.7}
 
@@ -172,36 +172,36 @@ body{font-family:"Cormorant Garamond",serif;background:linear-gradient(135deg,#f
 <div class="qa-item">
 <h3>Can I bring my own alcohol?</h3>
 <div class="answer">
-<p>No, outside alcohol is not permitted on the premises. Cars may be checked, and any drinks found in vehicles or concealed inside the venue will result in guests being asked to leave by Buena staff.</p>
-<p>The venue provides a fully stocked bar and refreshment service. Please bring cash if you would like to purchase additional drinks beyond those served during the celebration.</p>
+<p>No, outside alcohol is not permitted. Cars may be checked, and any drinks found in vehicles or concealed inside the venue will result in guests being asked to leave by Buena staff.</p>
+<p>The venue provides a fully stocked bar. Please bring cash if you would like to purchase additional drinks beyond those served during the celebration.</p>
 </div>
 </div>
 
 <div class="qa-item">
 <h3>Can I smoke or vape?</h3>
 <div class="answer">
-<p>Smoking and vaping are not permitted inside the venue. Buena Vista reserves the right to issue warnings to anyone violating smoke-free zones and may close the Banqueting Hall if guests continue to disregard this rule. Guests who fail to comply may also be asked to leave by Buena staff.</p>
+<p>Smoking and vaping are not permitted inside the venue. Buena Vista may issue warnings or ask guests to leave if rules are violated.</p>
 </div>
 </div>
 
 <div class="qa-item">
 <h3>Can guests enter the kitchen?</h3>
 <div class="answer">
-<p>No. The kitchen is reserved exclusively for caterers, waiters, and serving staff. Guests are not permitted to enter or linger in this area. Anyone found doing so will be asked to stop and return to enjoying the wedding celebrations.</p>
+<p>No. The kitchen is reserved for caterers, waiters, and serving staff. Guests may not enter.</p>
 </div>
 </div>
 
 <div class="qa-item">
 <h3>Mutual Respect</h3>
 <div class="answer">
-<p>Buena Vista holds the right to stop any function at any given time if guests harass staff, access unauthorized areas, or misbehave and break venue rules.</p>
+<p>Buena Vista can stop any function if guests harass staff, access unauthorized areas, or break venue rules.</p>
 </div>
 </div>
 
 <div class="qa-item">
 <h3>Guest Policy</h3>
 <div class="answer">
-<p>Entry to the venue is restricted to guests who have received an official invitation and submitted their RSVP. Admission will only be granted to those listed on the RSVP with confirmed responses and assigned table numbers. Please do not bring additional guests.</p>
+<p>Entry is restricted to invited guests who submitted their RSVP. Please do not bring extra unregistered guests.</p>
 </div>
 </div>
 
@@ -260,7 +260,9 @@ document.getElementById("rsvpSuccess").style.display="block"
 document.getElementById("waOpen").onclick=()=>{
 const num="27673669644"
 const msg=encodeURIComponent("Hi! I’d like to share my wedding photos.")
-window.open("https://wa.me/"+num+"?text="+msg,"_blank")
+const isMobile=/Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent)
+const link=isMobile?`https://wa.me/${num}?text=${msg}`:`https://web.whatsapp.com/send?phone=${num}&text=${msg}`
+window.open(link,"_blank")
 document.getElementById("waSuccess").style.display="block"
 }
 </script>
