@@ -1,241 +1,217 @@
 <!DOCTYPE html>
-<html lang="en"> 
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <title>Nqobile and Sebina Wedding</title>
-
-<link rel="icon" type="image/png" href="favicon.png">
-<link rel="apple-touch-icon" href="favicon.png">
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<meta property="og:title" content="Nqobile & Sebina Wedding">
-<meta property="og:description" content="Join us as we celebrate our wedding on March 27, 2026">
-<meta property="og:image" content="https://raw.githubusercontent.com/nqobilekhuzwayo30-cmyk/nqobile-sebina-wedding/main/share.png">
-<meta property="og:url" content="https://nqobilekhuzwayo30-cmyk.github.io/nqobile-sebina-wedding/">
-<meta property="og:type" content="website">
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Cormorant+Garamond:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="favicon.png">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;user-select:none}
-body{font-family:"Cormorant Garamond",serif;background:linear-gradient(135deg,#f7f2f3,#e8d9cf);min-height:100vh}
-.navbar{background:rgba(255,255,255,0.95);backdrop-filter:blur(16px);padding:18px 0;position:sticky;top:0;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,0.1);z-index:10}
-.logo{font-family:"Dancing Script",cursive;font-size:2.4rem;color:#d8b384;font-weight:700}
-.container{max-width:1200px;margin:auto;padding:24px}
-
-.hero-card{background:rgba(255,255,255,0.85);border-radius:24px;padding:40px 24px;text-align:center;box-shadow:0 35px 90px rgba(0,0,0,0.3);margin-bottom:50px}
-.hero-names{font-family:"Dancing Script",cursive;font-size:clamp(4rem,12vw,6rem);color:#2c1f1e}
-.hero-date{font-size:2rem;color:#d8b384;margin:20px 0 40px}
-.invite-video{width:100%;max-width:820px;border-radius:18px;box-shadow:0 30px 80px rgba(0,0,0,0.3)}
-
+body{
+font-family:"Cormorant Garamond",serif;
+background:linear-gradient(135deg,#f7f2f3,#e8d9cf);
+min-height:100vh;
+overflow-x:hidden
+}
+.navbar{
+background:rgba(255,255,255,0.95);
+backdrop-filter:blur(16px);
+padding:18px 0;
+position:sticky;
+top:0;
+text-align:center;
+box-shadow:0 4px 20px rgba(0,0,0,0.1);
+z-index:10
+}
+.logo{
+font-family:"Dancing Script",cursive;
+font-size:2.4rem;
+color:#d8b384;
+font-weight:700
+}
+.container{
+max-width:1200px;
+margin:auto;
+padding:24px
+}
+.hero-card{
+background:rgba(255,255,255,0.85);
+border-radius:24px;
+padding:40px 24px;
+text-align:center;
+box-shadow:0 35px 90px rgba(0,0,0,0.3);
+animation:floatSlow 8s ease-in-out infinite;
+margin-bottom:50px
+}
+.hero-names{
+font-family:"Dancing Script",cursive;
+font-size:clamp(4rem,12vw,6rem);
+color:#2c1f1e
+}
+.hero-date{
+font-size:2rem;
+color:#d8b384;
+margin:20px 0 40px
+}
+.invite-video{
+width:100%;
+max-width:820px;
+border-radius:18px;
+box-shadow:0 30px 80px rgba(0,0,0,0.3);
+animation:floatSlow 9s ease-in-out infinite
+}
 .countdown-card{text-align:center;margin-bottom:50px}
-.countdown-title{display:inline-block;font-family:"Playfair Display",serif;font-size:2.4rem;border:2px solid #d8b384;border-radius:14px;padding:12px 24px;margin-bottom:20px}
-.countdown{display:flex;justify-content:center;gap:24px;flex-wrap:wrap}
-.countdown-item{background:rgba(255,255,255,0.85);padding:26px 22px;border-radius:20px;min-width:120px;box-shadow:0 30px 80px rgba(0,0,0,0.3)}
-.countdown-number{font-size:2.6rem;font-weight:bold;color:#d8b384}
-.countdown-label{font-size:0.9rem;text-transform:uppercase;color:#666}
-
-.section-card{background:rgba(255,255,255,0.85);border-radius:20px;padding:25px;margin-bottom:50px;text-align:center;box-shadow:0 30px 80px rgba(0,0,0,0.3)}
-.header-box{display:inline-block;border:2px solid #d8b384;border-radius:14px;padding:14px 20px;font-family:"Playfair Display",serif;font-size:2rem;margin-bottom:25px}
-
-.map-frame{border-radius:22px;overflow:hidden;border:2px solid #d8b384}
-.map-frame iframe{width:100%;height:320px;border:0}
-
-.address{margin-top:18px;font-size:20px}
-.time{color:#d8b384;font-weight:bold}
-
-.rsvp-card input,.rsvp-card textarea{width:100%;padding:14px;margin:10px 0;border-radius:10px;border:none}
-.rsvp-card button,.wa-button{width:100%;padding:16px;border:none;border-radius:40px;background:#d8b384;font-size:16px;cursor:pointer}
-
+.countdown-title{
+display:inline-block;
+font-family:"Playfair Display",serif;
+font-size:2.4rem;
+border:2px solid #d8b384;
+border-radius:14px;
+padding:12px 24px;
+margin-bottom:20px;
+animation:floatHeader 6s ease-in-out infinite
+}
+.countdown{
+display:flex;
+justify-content:center;
+gap:24px;
+flex-wrap:wrap
+}
+.countdown-item{
+background:rgba(255,255,255,0.85);
+padding:26px 22px;
+border-radius:20px;
+min-width:120px;
+box-shadow:0 30px 80px rgba(0,0,0,0.3);
+animation:floatSlow 8s ease-in-out infinite
+}
+.countdown-number{
+font-size:2.6rem;
+font-weight:bold;
+color:#d8b384
+}
+.countdown-label{
+font-size:0.9rem;
+text-transform:uppercase;
+color:#666
+}
+.header-box{
+display:inline-block;
+border:2px solid #d8b384;
+border-radius:14px;
+padding:14px 20px;
+font-family:"Playfair Display",serif;
+font-size:2rem;
+margin-bottom:25px;
+animation:floatHeader 6s ease-in-out infinite
+}
+.map-container .header-box{color:#000}
+.map-container,
+.qna,
+.thank-you,
+.rsvp-card{
+background:rgba(255,255,255,0.85);
+border-radius:20px;
+padding:25px;
+margin-bottom:50px;
+text-align:center;
+box-shadow:0 30px 80px rgba(0,0,0,0.3);
+animation:floatSlow 9s ease-in-out infinite
+}
+.map-frame{
+position:relative;
+border-radius:22px;
+overflow:hidden;
+border:2px solid #d8b384;
+box-shadow:inset 0 0 0 1px rgba(216,179,132,0.4),0 25px 60px rgba(0,0,0,0.35)
+}
+.map-frame::after{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(to bottom,rgba(0,0,0,0.08),rgba(0,0,0,0.15));
+pointer-events:none
+}
+.map-frame iframe{
+width:100%;
+height:320px;
+border:0;
+border-radius:20px
+}
+.address{
+margin-top:18px;
+font-size:20px;
+line-height:1.6
+}
+.address a{
+color:#2c1f1e;
+text-decoration:none;
+border-bottom:1px solid #d8b384
+}
+.time{font-weight:bold;color:#d8b384}
+.rsvp-card input,
+.rsvp-card textarea{
+width:100%;
+padding:14px;
+margin:10px 0;
+border-radius:10px;
+border:none
+}
+.rsvp-card button{
+width:100%;
+padding:16px;
+border:none;
+border-radius:40px;
+background:#d8b384;
+font-size:16px;
+cursor:pointer
+}
 .success{display:none;padding:20px;color:#b89b5e}
-
-/* Q&A and FAQ cards */
-.qa-item{margin-bottom:15px;text-align:center}
-.qa-item .card{background:#fff;padding:18px 22px;border-radius:12px;box-shadow:0 5px 15px rgba(0,0,0,0.1)}
-.qa-item h3{color:#d8b384;font-family:"Playfair Display",serif;margin-bottom:0;font-size:1.2rem;cursor:pointer}
-.qa-item .answer{padding-top:8px;font-size:1rem;color:#333;display:none;text-align:center}
-
+.qa-item{margin-bottom:30px}
+.qa-item h3{
+color:#d8b384;
+font-family:"Playfair Display",serif
+}
+.thank-you img{
+max-width:200px;
+margin-top:20px;
+border-radius:12px
+}
 .footer{text-align:center;padding:30px;opacity:0.7}
 
-/* Popup */
-#invitePopup{position:fixed;inset:0;background:rgba(0,0,0,0.35);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;z-index:999;opacity:0;visibility:hidden}
-#invitePopup.show{opacity:1;visibility:visible}
-#invitePopup.fade-out{opacity:0;transition:0.8s}
-.popup-content{background:#fff;border-radius:26px;padding:40px 30px;text-align:center;max-width:420px;box-shadow:0 40px 120px rgba(0,0,0,0.35)}
-.popup-content h2{font-family:"Dancing Script",cursive;font-size:3rem;color:#d8b384}
-.popup-content p{margin-top:14px;font-size:1.2rem;color:#555}
+@keyframes floatSlow{
+0%{transform:translateY(0)}
+50%{transform:translateY(-8px)}
+100%{transform:translateY(0)}
+}
+@keyframes floatHeader{
+0%{transform:translateY(0)}
+50%{transform:translateY(-4px)}
+100%{transform:translateY(0)}
+}
 </style>
 </head>
+
 <body>
-
-<!-- Invitation Popup -->
-<div id="invitePopup">
-  <div class="popup-content">
-    <h2>You're Invited!</h2>
-    <p>Nqobile & Sebina request the honor of your presence at their wedding.</p>
-  </div>
-</div>
-
 <nav class="navbar">
-  <div class="logo">Nqobile <i class="fas fa-heart"></i> Sebina</div>
+<div class="logo">Nqobile <i class="fas fa-heart"></i> Sebina</div>
 </nav>
 
 <div class="container">
 
 <div class="hero-card">
-  <h1 class="hero-names">Nqobile & Sebina</h1>
-  <p class="hero-date">Friday, March 27, 2026</p>
-  <video autoplay muted loop playsinline class="invite-video">
-    <source src="vid.mp4" type="video/mp4">
-  </video>
+<h1 class="hero-names">Nqobile & Sebina</h1>
+<p class="hero-date">Friday, March 27, 2026</p>
+<video autoplay muted loop playsinline class="invite-video">
+<source src="vid.mp4" type="video/mp4">
+</video>
 </div>
 
 <div class="countdown-card">
-  <div class="countdown-title" id="countdownTitle">The Countdown</div>
-  <div class="countdown">
-    <div class="countdown-item"><div class="countdown-number" id="days">0</div><div class="countdown-label">Days</div></div>
-    <div class="countdown-item"><div class="countdown-number" id="hours">0</div><div class="countdown-label">Hours</div></div>
-    <div class="countdown-item"><div class="countdown-number" id="minutes">0</div><div class="countdown-label">Minutes</div></div>
-    <div class="countdown-item"><div class="countdown-number" id="seconds">0</div><div class="countdown-label">Seconds</div></div>
-  </div>
-</div>
-
-<div class="section-card">
-  <div class="header-box">Wedding Talk</div>
-  <div class="address">Kibler Park Kingdom Hall<br>Time <span class="time">13:00</span></div>
-  <div class="map-frame">
-    <iframe src="https://www.google.com/maps?q=1%20Milner%20Drive%20Kibler%20Park%20Johannesburg&output=embed"></iframe>
-  </div>
-</div>
-
-<div class="section-card">
-  <div class="header-box">Reception</div>
-  <div class="address">Buena Vista Country Estate wedding venue<br>Time <span class="time">15:00</span></div>
-  <div class="map-frame">
-    <iframe src="https://www.google.com/maps?q=21%20Barnacle%20Rd%20Towerby%20Johannesburg%20South&output=embed"></iframe>
-  </div>
-</div>
-
-<!-- RSVP -->
-<div class="section-card rsvp-card">
-  <div class="header-box">RSVP</div>
-  <form action="https://docs.google.com/forms/d/e/1FAIpQLScNfgJbch0Xz2KU7RaLt58EaeB2QoEcxtvL7_S8GzjflThXqg/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true; setTimeout(showThankYou,600);">
-    <input name="entry.994600838" placeholder="Full Name" required>
-    <input name="entry.793758707" placeholder="Phone Number" required>
-    <textarea name="entry.282977896" placeholder="Message"></textarea>
-    <button type="submit">Send RSVP</button>
-  </form>
-  <iframe name="hidden_iframe" style="display:none"></iframe>
-  <div id="rsvpSuccess" class="success">
-    <h2>Thank you!</h2>
-    <p>Your RSVP has been received.</p>
-  </div>
-</div>
-
-<!-- WhatsApp -->
-<div class="section-card">
-  <div class="header-box">Share Your Photos</div>
-  <p>You can share your wedding pictures with us via WhatsApp.</p>
-  <button id="waOpen" class="wa-button">Open WhatsApp Chat</button>
-  <div class="success" id="waSuccess">
-    <h2>Thank you!</h2>
-    <p>WhatsApp chat opened. You can now share your photos.</p>
-  </div>
-</div>
-
-<!-- Q&A -->
-<div class="section-card">
-  <div class="header-box">Questions & Answers</div>
-  <div class="qa-item"><div class="card"><h3>When is the RSVP deadline?</h3><div class="answer"><p>Please RSVP by March 1st, so we can have an accurate headcount.</p></div></div></div>
-  <div class="qa-item"><div class="card"><h3>Are kids welcome?</h3><div class="answer"><p>As much as we love your little ones, we will not be including them in the ceremony or reception.</p></div></div></div>
-  <div class="qa-item"><div class="card"><h3>Where should I park?</h3><div class="answer"><p>There is plenty of free parking available near the entrance of the venue.</p></div></div></div>
-  <div class="qa-item"><div class="card"><h3>Is the wedding indoors or outdoors?</h3><div class="answer"><p>The wedding talk and reception will both be held indoors.</p></div></div></div>
-  <div class="qa-item"><div class="card"><h3>Can we take pictures during the wedding?</h3><div class="answer"><p>Yes, photos and videos are welcome. Avoid photos during the wedding talk and do not post online without permission from the bride and groom.</p></div></div></div>
-</div>
-
-<!-- FAQ -->
-<div class="section-card">
-  <div class="header-box">FAQ</div>
-  <div class="qa-item"><div class="card"><h3>Can I bring my own alcohol?</h3><div class="answer"><p>No, outside alcohol is not permitted on the premises. Cars may be checked, and any drinks found in vehicles or concealed inside the venue will result in guests being asked to leave by Buena staff.</p><p>The venue provides a fully stocked bar and refreshment service. Please bring cash if you would like to purchase additional drinks beyond those served during the celebration.</p></div></div></div>
-  <div class="qa-item"><div class="card"><h3>Can I smoke or vape?</h3><div class="answer"><p>Smoking and vaping are not permitted inside the venue. Buena Vista reserves the right to issue warnings to anyone violating smoke‑free zones, and may close the Banqueting Hall if guests continue to disregard this rule. Guests who fail to comply may also be asked to leave by Buena staff.</p></div></div></div>
-  <div class="qa-item"><div class="card"><h3>Can guests enter the kitchen?</h3><div class="answer"><p>No. The kitchen is reserved exclusively for caterers, waiters, and serving staff. Guests are not permitted to enter or linger in this area. Anyone found doing so will be asked to stop and return to enjoying the wedding celebrations.</p></div></div></div>
-  <div class="qa-item"><div class="card"><h3>MUTUAL RESPECT</h3><div class="answer"><p>Buena Vista holds the right to stop any function at any given time if guests harass staff, access unauthorized areas, or misbehave in general, breaking venue rules.</p></div></div></div>
-  <div class="qa-item"><div class="card"><h3>Guest Policy</h3><div class="answer"><p>We kindly remind all attendees that entry to the venue is restricted to guests who have received an official invitation and submitted their RSVP. Admission will only be granted to those listed on the RSVP with confirmed responses and assigned table numbers. For security reasons, anyone not on the RSVP list will not be permitted inside. Please do not bring additional guests or plus ones who are not registered.</p></div></div></div>
-</div>
-
-<div class="section-card">
-  <div class="header-box">Thank You</div>
-  <p>We cannot wait to celebrate with you.</p>
-  <img src="00.jpg" style="max-width:200px;border-radius:12px">
-</div>
-
-<footer class="footer">Made with love by Nqobile and Sebina</footer>
-
-</div>
-
-<script>
-// Popup
-window.addEventListener("load",()=>{
-  const popup=document.getElementById("invitePopup")
-  popup.classList.add("show")
-  setTimeout(()=>{
-    popup.classList.add("fade-out")
-    setTimeout(()=>popup.style.display="none",800)
-  },5000)
-})
-
-// Countdown
-const days=document.getElementById("days")
-const hours=document.getElementById("hours")
-const minutes=document.getElementById("minutes")
-const seconds=document.getElementById("seconds")
-const title=document.getElementById("countdownTitle")
-const weddingDate=new Date("2026-03-27T13:00:00").getTime()
-setInterval(()=>{
-  const diff=weddingDate-Date.now()
-  if(diff<=0){
-    days.textContent=0
-    hours.textContent=0
-    minutes.textContent=0
-    seconds.textContent=0
-    title.textContent="The wedding has started"
-    return
-  }
-  days.textContent=Math.floor(diff/86400000)
-  hours.textContent=Math.floor(diff/3600000%24)
-  minutes.textContent=Math.floor(diff/60000%60)
-  seconds.textContent=Math.floor(diff/1000%60)
-},1000)
-
-// WhatsApp
-document.getElementById("waOpen").onclick=()=>{
-  const num="27673669644"
-  const msg=encodeURIComponent("Hi! I’d like to share my wedding photos.")
-  const isMobile=/Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent)
-  const link=isMobile?`https://wa.me/${num}?text=${msg}`:`https://web.whatsapp.com/send?phone=${num}&text=${msg}`
-  window.open(link,"_blank")
-  document.getElementById("waSuccess").style.display="block"
-}
-
-// Q&A & FAQ collapse
-document.querySelectorAll(".qa-item h3").forEach(q=>{
-  q.addEventListener("click",()=>{
-    const ans=q.nextElementSibling
-    if(ans.style.display==="block") ans.style.display="none"
-    else ans.style.display="block"
-  })
-})
-
-// RSVP thank you
-var submitted=false
-function showThankYou(){
-  if(submitted){
-    document.querySelector(".rsvp-card form").style.display="none"
-    document.getElementById("rsvpSuccess").style.display="block"
-  }
-}
-</script>
-</body>
-</html>
+<div class="countdown-title">The Countdown</div>
+<div class="countdown">
+<div class="countdown-item"><div class="countdown-number" id="days">0</div><div class="countdown-label">Days</div></div>
+<div class="countdown-item"><div class="countdown-number" id="hours">0</div><div cla
