@@ -214,4 +214,127 @@ border-radius:12px
 <div class="countdown-title">The Countdown</div>
 <div class="countdown">
 <div class="countdown-item"><div class="countdown-number" id="days">0</div><div class="countdown-label">Days</div></div>
-<div class="countdown-item"><div class="countdown-number" id="hours">0</div><div cla
+<div class="countdown-item"><div class="countdown-number" id="hours">0</div><div class="countdown-label">Hours</div></div>
+<div class="countdown-item"><div class="countdown-number" id="minutes">0</div><div class="countdown-label">Minutes</div></div>
+<div class="countdown-item"><div class="countdown-number" id="seconds">0</div><div class="countdown-label">Seconds</div></div>
+</div>
+</div>
+
+<div class="map-container">
+<a href="https://www.google.com/maps?q=1+Milner+Drive+Kibler+Park+Johannesburg+2059" target="_blank">
+<div class="header-box">Wedding Talk</div>
+</a>
+<div class="address">
+Kibler Park Kingdom Hall<br>
+Time <span class="time">13:00</span>
+</div>
+<div class="map-frame">
+<iframe src="https://www.google.com/maps?q=1%20Milner%20Drive%20Kibler%20Park%20Johannesburg&output=embed"></iframe>
+</div>
+</div>
+
+<div class="map-container">
+<a href="https://www.google.com/maps?q=21+Barnacle+Road+Towerby+Johannesburg+South" target="_blank">
+<div class="header-box">Reception</div>
+</a>
+<div class="address">
+Buena Vista Country Estate wedding venue<br>
+Time <span class="time">15:00</span>
+</div>
+<div class="map-frame">
+<iframe src="https://www.google.com/maps?q=21%20Barnacle%20Rd%20Towerby%20Johannesburg%20South&output=embed"></iframe>
+</div>
+</div>
+
+<div class="rsvp-card">
+<div class="header-box">RSVP</div>
+<form id="rsvpForm">
+<input name="entry.994600838" placeholder="Full Name" required>
+<input name="entry.793758707" placeholder="Phone Number" required>
+<input name="entry.458040034" value="1" readonly>
+<textarea name="entry.282977896" placeholder="Message"></textarea>
+<button type="submit">Send RSVP</button>
+</form>
+<div id="rsvpSuccess" class="success">
+<h2>Thank you!</h2>
+<p>Your RSVP has been received.</p>
+</div>
+</div>
+
+<div class="qna">
+<div class="header-box">Questions & Answers</div>
+
+<div class="qa-item">
+<h3>When is the RSVP deadline?</h3>
+<p>Please RSVP by March 1st, so we can have an accurate headcount.</p>
+</div>
+
+<div class="qa-item">
+<h3>Are kids welcome?</h3>
+<p>As much as we love your little ones, we will not be including them in the ceremony or reception.</p>
+</div>
+
+<div class="qa-item">
+<h3>Where should I park?</h3>
+<p>There is plenty of free parking available near the entrance of the venue.</p>
+</div>
+
+<div class="qa-item">
+<h3>Is the wedding indoors or outdoors?</h3>
+<p>The wedding talk and reception will both be held indoors.</p>
+</div>
+
+<div class="qa-item">
+<h3>Can we take pictures during the wedding?</h3>
+<p>Yes, photos and videos are welcome. Avoid photos during the wedding talk and do not post online without permission from the bride and groom.</p>
+</div>
+</div>
+
+<div class="thank-you">
+<div class="header-box">Thank You</div>
+<p>We cannot wait to celebrate with you.</p>
+<img src="00.jpg" alt="Thank You">
+</div>
+
+<footer class="footer">Made with love by Nqobile and Sebina</footer>
+
+</div>
+
+<script>
+const weddingDate=new Date("2026-03-27T00:00:00").getTime()
+setInterval(()=>{
+const diff=weddingDate-Date.now()
+if(diff<=0){
+days.textContent=hours.textContent=minutes.textContent=seconds.textContent="The wedding has started"
+return
+}
+days.textContent=Math.floor(diff/86400000)
+hours.textContent=Math.floor(diff/3600000%24)
+minutes.textContent=Math.floor(diff/60000%60)
+seconds.textContent=Math.floor(diff/1000%60)
+},1000)
+
+var submitted=false
+
+// RSVP submit mimicking Google Forms POST
+document.getElementById('rsvpForm').addEventListener('submit', function(e){
+e.preventDefault();
+submitted=true;
+const form=this;
+const data=new FormData();
+data.append("entry.994600838", form.querySelector('input[name="entry.994600838"]').value);
+data.append("entry.793758707", form.querySelector('input[name="entry.793758707"]').value);
+data.append("entry.458040034", form.querySelector('input[name="entry.458040034"]').value);
+data.append("entry.282977896", form.querySelector('textarea[name="entry.282977896"]').value);
+fetch("https://docs.google.com/forms/d/e/1FAIpQLScNfgJbch0Xz2KU7RaLt58EaeB2QoEcxtvL7_S8GzjflThXqg/formResponse",{
+method:"POST",
+mode:"no-cors",
+body:data
+}).finally(()=>{
+form.style.display="none";
+document.getElementById("rsvpSuccess").style.display="block";
+});
+});
+</script>
+</body>
+</html>
