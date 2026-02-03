@@ -36,7 +36,7 @@ body{font-family:"Cormorant Garamond",serif;background:linear-gradient(135deg,#f
 .countdown-label{font-size:0.9rem;text-transform:uppercase;color:#666}
 .header-box{display:inline-block;border:2px solid #d8b384;border-radius:14px;padding:14px 20px;font-family:"Playfair Display",serif;font-size:2rem;margin-bottom:25px;animation:floatHeader 6s ease-in-out infinite}
 .map-container .header-box{color:#000}
-.map-container,.qna,.thank-you,.rsvp-card{background:rgba(255,255,255,0.85);border-radius:20px;padding:25px;margin-bottom:50px;text-align:center;box-shadow:0 30px 80px rgba(0,0,0,0.3);animation:floatSlow 9s ease-in-out infinite}
+.map-container,.qna,.thank-you,.rsvp-card,.faq{background:rgba(255,255,255,0.85);border-radius:20px;padding:25px;margin-bottom:50px;text-align:center;box-shadow:0 30px 80px rgba(0,0,0,0.3);animation:floatSlow 9s ease-in-out infinite}
 .map-frame{position:relative;border-radius:22px;overflow:hidden;border:2px solid #d8b384;box-shadow:inset 0 0 0 1px rgba(216,179,132,0.4),0 25px 60px rgba(0,0,0,0.35)}
 .map-frame::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.08),rgba(0,0,0,0.15));pointer-events:none}
 .map-frame iframe{width:100%;height:320px;border:0;border-radius:20px}
@@ -47,12 +47,12 @@ body{font-family:"Cormorant Garamond",serif;background:linear-gradient(135deg,#f
 .rsvp-card button{width:100%;padding:16px;border:none;border-radius:40px;background:#d8b384;font-size:16px;cursor:pointer}
 .success{display:none;padding:20px;color:#b89b5e}
 .qa-item{margin-bottom:30px}
-.qa-item h3{color:#d8b384;font-family:"Playfair Display",serif}
+.qa-item h3{color:#d8b384;font-family:"Playfair Display",serif;font-size:1.4rem;margin-bottom:12px}
+.qa-item .answer{font-size:1.1rem;line-height:1.6;color:#555}
 .thank-you img{max-width:200px;margin-top:20px;border-radius:12px}
 .footer{text-align:center;padding:30px;opacity:0.7}
 @keyframes floatSlow{0%{transform:translateY(0)}50%{transform:translateY(-8px)}100%{transform:translateY(0)}}
 @keyframes floatHeader{0%{transform:translateY(0)}50%{transform:translateY(-4px)}100%{transform:translateY(0)}}
-
 
 /* Invitation Popup */
 .invite-overlay{
@@ -102,7 +102,6 @@ animation:popupOut 0.8s forwards;
 @keyframes popupOut{
 to{opacity:0;transform:scale(1.05)}
 }
-
 </style>
 </head>
 
@@ -177,7 +176,6 @@ Time <span class="time">15:00</span>
 <div class="rsvp-card">
 <div class="header-box">Share Your Photos</div>
 <p>You can share your wedding pictures with us via WhatsApp</p>
-
 <p>Click below to open WhatsApp chat directly with us:</p>
 <button id="waOpen">Open WhatsApp Chat</button>
 <div id="waSuccess" class="success">
@@ -186,42 +184,51 @@ Time <span class="time">15:00</span>
 </div>
 </div>
 
+<!-- Questions and Answers Section -->
 <div class="qna">
-<div class="header-box">Questions & Answers</div>
+<div class="header-box">Questions and Answers</div>
 <div class="qa-item">
 <h3>When is the RSVP deadline?</h3>
-<p>Please RSVP by March 1st, so we can have an accurate headcount.</p>
+<div class="answer">Please RSVP by March 1st so we can confirm numbers.</div>
 </div>
 <div class="qa-item">
-<h3>Are kids welcome?</h3>
-<p>As much as we love your little ones, we will not be including them in the ceremony or reception.</p>
+<h3>Are children allowed?</h3>
+<div class="answer">Unfortunately children will not be included in the ceremony or reception.</div>
 </div>
 <div class="qa-item">
-<h3>Where should I park?</h3>
-<p>There is plenty of free parking available near the entrance of the venue.</p>
+<h3>Can guests take photos?</h3>
+<div class="answer">Yes photos are welcome. Please avoid photos during the wedding talk.</div>
 </div>
 <div class="qa-item">
-<h3>Is the wedding indoors or outdoors?</h3>
-<p>The wedding talk and reception will both be held indoors.</p>
-</div>
-<div class="qa-item">
-<h3>Can we take pictures during the wedding?</h3>
-<p>Yes, photos and videos are welcome. Avoid photos during the wedding talk and do not post online without permission from the bride and groom.</p>
-</div>
-</div>
-  
-  <div class="invite-overlay" id="inviteOverlay">
-<div class="invite-popup" id="invitePopup">
-<h2>You Are Invited</h2>
-<p>Please join us as we celebrate our wedding</p>
+<h3>Is the wedding indoors?</h3>
+<div class="answer">Both the wedding talk and reception will be indoors.</div>
 </div>
 </div>
 
-<nav class="navbar">
-<div class="logo">Nqobile <i class="fas fa-heart"></i> Sebina</div>
-</nav>
-
-<div class="container">
+<!-- FAQ Section -->
+<div class="faq">
+<div class="header-box">FAQ</div>
+<div class="qa-item">
+<h3>Can I bring extra guests?</h3>
+<div class="answer">Only guests who have RSVP'd are allowed to attend.</div>
+</div>
+<div class="qa-item">
+<h3>Can I bring my own alcohol?</h3>
+<div class="answer">No outside alcohol is permitted. Vehicles may be checked.</div>
+</div>
+<div class="qa-item">
+<h3>Is smoking or vaping allowed?</h3>
+<div class="answer">Smoking and vaping are not allowed inside the venue.</div>
+</div>
+<div class="qa-item">
+<h3>Can guests access the kitchen?</h3>
+<div class="answer">The kitchen area is restricted to venue staff only.</div>
+</div>
+<div class="qa-item">
+<h3>What time should guests arrive?</h3>
+<div class="answer">Please arrive at least 30 minutes before the ceremony.</div>
+</div>
+</div>
 
 <div class="thank-you">
 <div class="header-box">Thank You</div>
@@ -229,13 +236,25 @@ Time <span class="time">15:00</span>
 <img src="00.jpg" alt="Thank You">
 </div>
 
+</div>
+
 <footer class="footer">Made with love by Nqobile and Sebina</footer>
 
+<!-- Invitation Popup -->
+<div class="invite-overlay" id="inviteOverlay">
+<div class="invite-popup" id="invitePopup">
+<h2>You Are Invited</h2>
+<p>Please join us as we celebrate our wedding</p>
+</div>
 </div>
 
 <script>
 // Countdown
 const weddingDate = new Date("2026-03-27T13:00:00").getTime()
+const days = document.getElementById("days")
+const hours = document.getElementById("hours")
+const minutes = document.getElementById("minutes")
+const seconds = document.getElementById("seconds")
 setInterval(() => {
 const diff = weddingDate - Date.now()
 if (diff <= 0) {
@@ -262,7 +281,7 @@ document.querySelectorAll(".success").forEach(s=>s.style.display="block")
 // WhatsApp direct to your number
 document.getElementById("waOpen").addEventListener("click", function(){
 const yourNumber = "27673669644"; // your number with country code
-const msg = encodeURIComponent("Hi! I’d like to share my wedding photos.");
+const msg = encodeURIComponent("Hi! I'd like to share my wedding photos.");
 const isMobile = /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
 let waLink = isMobile ? `https://wa.me/${yourNumber}?text=${msg}` : `https://web.whatsapp.com/send?phone=${yourNumber}&text=${msg}`;
 window.open(waLink,"_blank");
@@ -281,6 +300,3 @@ document.getElementById("inviteOverlay").style.display="none"
 </script>
 </body>
 </html>
-
-
-
