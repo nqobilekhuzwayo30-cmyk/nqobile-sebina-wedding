@@ -128,7 +128,24 @@ Time <span class="time">15:00</span>
 </div>
 </div>
 
-<!-- 🎁 GIFT REGISTRY with YOUR EXACT BANK DETAILS -->
+<!-- RSVP FIRST -->
+<div class="rsvp-card">
+<div class="header-box">RSVP</div>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLScNfgJbch0Xz2KU7RaLt58EaeB2QoEcxtvL7_S8GzjflThXqg/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true; setTimeout(showThankYou,600);">
+<input name="entry.994600838" placeholder="Full Name" required>
+<input name="entry.793758707" placeholder="Phone Number" required>
+<input name="entry.458040034" value="1" readonly>
+<textarea name="entry.282977896" placeholder="Message"></textarea>
+<button type="submit">Send RSVP</button>
+</form>
+<iframe name="hidden_iframe" style="display:none"></iframe>
+<div id="rsvpSuccess" class="success">
+<h2>Thank you!</h2>
+<p>Your RSVP has been received.</p>
+</div>
+</div>
+
+<!-- 🎁 REGISTRY NOW AFTER RSVP -->
 <div class="registry-card">
 <div class="header-box">Gift Registry</div>
 <p style="font-size:1.1rem;margin-bottom:25px;color:#555;">Your presence is our greatest gift, but if you'd like to celebrate with us:</p>
@@ -145,22 +162,6 @@ Time <span class="time">15:00</span>
 <p style="font-size:0.9rem;color:#555;">Guests can search for our registry using this ID on the MRP Home website.</p>
 </div>
 <p style="font-size:0.95rem;color:#666;font-style:italic;">*Simply click above or use our Registry ID to contribute to our new journey together</p>
-</div>
-
-<div class="rsvp-card">
-<div class="header-box">RSVP</div>
-<form action="https://docs.google.com/forms/d/e/1FAIpQLScNfgJbch0Xz2KU7RaLt58EaeB2QoEcxtvL7_S8GzjflThXqg/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true; setTimeout(showThankYou,600);">
-<input name="entry.994600838" placeholder="Full Name" required>
-<input name="entry.793758707" placeholder="Phone Number" required>
-<input name="entry.458040034" value="1" readonly>
-<textarea name="entry.282977896" placeholder="Message"></textarea>
-<button type="submit">Send RSVP</button>
-</form>
-<iframe name="hidden_iframe" style="display:none"></iframe>
-<div id="rsvpSuccess" class="success">
-<h2>Thank you!</h2>
-<p>Your RSVP has been received.</p>
-</div>
 </div>
 
 <div class="rsvp-card">
@@ -295,7 +296,7 @@ document.getElementById("waOpen").style.display="none";
 document.getElementById("waSuccess").style.display="block";
 });
 
-// ✅ YOUR EXACT BANK DETAILS - COPY TO CLIPBOARD
+// YOUR EXACT BANK DETAILS - COPY TO CLIPBOARD
 function copyAccount() {
 const bankDetails = `Nqobile & Sebina Wedding
 🏦 FNB Bank
