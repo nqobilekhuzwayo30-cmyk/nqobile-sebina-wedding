@@ -47,6 +47,8 @@ body{font-family:"Cormorant Garamond",serif;background:linear-gradient(135deg,#f
 .rsvp-card button,.registry-button{width:100%;padding:16px;border:none;border-radius:40px;background:#d8b384;font-size:16px;cursor:pointer;color:white;text-decoration:none;display:block;margin:10px 0;font-family:"Playfair Display",serif;font-weight:600;transition:transform 0.3s ease}
 .rsvp-card button:hover,.registry-button:hover{transform:translateY(-2px)}
 .success{display:none;padding:20px;color:#b89b5e}
+.photo-buttons{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px;margin:25px 0}
+.photo-buttons .registry-button{padding:14px;font-size:15px}
 .qa-item{margin-bottom:30px;padding:20px 0;border-bottom:1px solid rgba(216,179,132,0.3);transition:transform 0.3s ease}
 .qa-item:last-child{border-bottom:none}
 .qa-item:hover{transform:translateX(8px)}
@@ -145,7 +147,7 @@ Time <span class="time">15:00</span>
 </div>
 </div>
 
-<!-- 🎁 REGISTRY NOW AFTER RSVP -->
+<!-- 🎁 REGISTRY -->
 <div class="registry-card">
 <div class="header-box">Gift Registry</div>
 <p style="font-size:1.1rem;margin-bottom:25px;color:#555;">Your presence is our greatest gift, but if you'd like to celebrate with us:</p>
@@ -164,14 +166,27 @@ Time <span class="time">15:00</span>
 <p style="font-size:0.95rem;color:#666;font-style:italic;">*Simply click above or use our Registry ID to contribute to our new journey together</p>
 </div>
 
+<!-- ✅ NEW GOOGLE DRIVE + WHATSAPP PHOTO SHARING -->
 <div class="rsvp-card">
-<div class="header-box">Share Your Photos</div>
-<p>You can share your wedding pictures with us via WhatsApp</p>
-<p>Click below to open WhatsApp chat directly with us:</p>
-<button id="waOpen">Open WhatsApp Chat</button>
-<div id="waSuccess" class="success">
-<h2>Thank you!</h2>
-<p>WhatsApp chat opened. You can now share your photos.</p>
+<div class="header-box">📸 Wedding Photo Album</div>
+<div style="padding:30px 20px;text-align:center">
+<img src="photos-qr.png" alt="Scan to Share Photos" style="width:260px;height:260px;border-radius:22px;box-shadow:0 25px 70px rgba(0,0,0,0.3);margin:0 auto 25px;display:block">
+<h3 style="font-family:'Dancing Script',cursive;font-size:2.5rem;color:#d8b384;margin-bottom:15px">Scan → Upload → Smile!</h3>
+<div style="background:#fff;padding:25px;border-radius:18px;margin:30px 10px;box-shadow:0 15px 40px rgba(0,0,0,0.15);border:2px solid #d8b384">
+<strong style="color:#2c1f1e;font-size:1.2rem;display:block;margin-bottom:8px;">👉 <a href="https://drive.google.com/drive/folders/18Bq9bGE0HRcfwKAfuliapB-AoMlzHLoL?usp=sharing" target="_blank" style="color:#d8b384;font-family:'Playfair Display';text-decoration:none;font-size:1.1rem;">drive.google.com/wedding-photos</a></strong>
+<p style="color:#666;margin:5px 0 0;font-size:0.95rem">Anyone with link can add files • No login needed</p>
+</div>
+<p style="font-size:1rem;color:#555;max-width:500px;margin:0 auto;line-height:1.6">
+💡 <strong>Tip:</strong> Name your folder "Table # - Your Names" (ex: "Table 5 - John & Mary") for easy organization
+</p>
+<div class="photo-buttons">
+<button onclick="copyDriveLink()" class="registry-button" style="background:#d8b384;">
+📋 Copy Drive Link
+</button>
+<a href="https://wa.me/27673669644?text=Hi!%20Here%20are%20my%20wedding%20photos%20😊" target="_blank" class="registry-button" style="background:#25D366;">
+💬 WhatsApp Backup
+</a>
+</div>
 </div>
 </div>
 
@@ -285,18 +300,7 @@ document.querySelectorAll(".rsvp-card form").forEach(f=>f.style.display="none")
 document.querySelectorAll(".success").forEach(s=>s.style.display="block")
 }}
 
-// WhatsApp direct to your number
-document.getElementById("waOpen").addEventListener("click", function(){
-const yourNumber = "27673669644"; 
-const msg = encodeURIComponent("Hi! I'd like to share my wedding photos.");
-const isMobile = /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
-let waLink = isMobile ? `https://wa.me/${yourNumber}?text=${msg}` : `https://web.whatsapp.com/send?phone=${yourNumber}&text=${msg}`;
-window.open(waLink,"_blank");
-document.getElementById("waOpen").style.display="none";
-document.getElementById("waSuccess").style.display="block";
-});
-
-// YOUR EXACT BANK DETAILS - COPY TO CLIPBOARD
+// FNB Bank Details
 function copyAccount() {
 const bankDetails = `Nqobile & Sebina Wedding
 🏦 FNB Bank
@@ -307,6 +311,14 @@ const bankDetails = `Nqobile & Sebina Wedding
   
 navigator.clipboard.writeText(bankDetails).then(() => {
     alert("✅ BANK DETAILS COPIED!\n\n" + bankDetails + "\n\n💰 Thank you for your generosity ❤️");
+});
+}
+
+// ✅ GOOGLE DRIVE PHOTO SHARING + WHATSAPP
+function copyDriveLink() {
+const driveLink = "https://drive.google.com/drive/folders/18Bq9bGE0HRcfwKAfuliapB-AoMlzHLoL?usp=sharing";
+navigator.clipboard.writeText(driveLink).then(() => {
+    alert("✅ GOOGLE DRIVE LINK COPIED!\n\nhttps://drive.google.com/drive/folders/18Bq9bGE0HRcfwKAfuliapB-AoMlzHLoL\n\n📸 Share your wedding photos! (Tip: Name folder 'Table # - Your Names')");
 });
 }
 
