@@ -37,12 +37,12 @@ body{font-family:"Cormorant Garamond",serif;background:linear-gradient(135deg,#f
 .hero-date{font-size:clamp(1.6rem,4.8vw,2.4rem);color:#d8b384;margin:28px 0 38px}
 .invite-video{width:100%;max-width:100%;height:auto;border-radius:16px;box-shadow:0 25px 60px rgba(0,0,0,0.3);animation:floatSlow 9s ease-in-out infinite}
 
-/* COUNTDOWN - MOBILE GRID */
+/* COUNTDOWN - EQUAL SQUARES */
 .countdown-card{text-align:center;margin-bottom:48px}
 .countdown-title{display:inline-block;font-family:"Playfair Display",serif;font-size:clamp(1.9rem,6vw,2.8rem);border:2px solid #d8b384;border-radius:12px;padding:16px 26px;margin-bottom:28px;animation:floatHeader 6s ease-in-out infinite}
-.countdown{display:grid;grid-template-columns:repeat(auto-fit,minmax(85px,1fr));gap:16px;justify-items:center;margin-top:20px}@media (min-width:500px){.countdown{display:flex;gap:28px}}
-.countdown-item{background:rgba(255,255,255,0.9);padding:26px 16px;border-radius:16px;min-width:85px;box-shadow:0 20px 50px rgba(0,0,0,0.25);animation:floatSlow 8s ease-in-out infinite}
-.countdown-number{font-size:clamp(1.9rem,7.5vw,3.1rem);font-weight:bold;color:#d8b384;line-height:1}
+.countdown{display:grid;grid-template-columns:repeat(4, 1fr);gap:16px;justify-items:center;margin-top:20px}@media (max-width:500px){.countdown{grid-template-columns:repeat(2, 1fr);gap:12px}}
+.countdown-item{background:rgba(255,255,255,0.9);width:100%;min-height:110px;padding:20px 12px;border-radius:16px;box-shadow:0 20px 50px rgba(0,0,0,0.25);animation:floatSlow 8s ease-in-out infinite;display:flex;flex-direction:column;justify-content:center;align-items:center}
+.countdown-number{font-size:clamp(1.9rem,7.5vw,3.1rem);font-weight:bold;color:#d8b384;line-height:1;margin-bottom:4px}
 .countdown-label{font-size:0.95rem;text-transform:uppercase;color:#666;font-weight:500;letter-spacing:0.5px}
 
 /* SECTIONS - MOBILE PERFECTED */
@@ -105,7 +105,6 @@ body{font-family:"Cormorant Garamond",serif;background:linear-gradient(135deg,#f
 </head>
 
 <body>
-<!-- HTML body content remains exactly the same as previous version -->
 <nav class="navbar">
 <div class="logo">Nqobile <i class="fas fa-heart"></i> Sebina</div>
 </nav>
@@ -277,7 +276,6 @@ Time <span class="time">15:00</span>
 </div>
 
 <script>
-// Same JavaScript as before - unchanged
 const weddingDate = new Date("2026-03-27T13:00:00").getTime()
 const days = document.getElementById("days")
 const hours = document.getElementById("hours")
