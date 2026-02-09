@@ -308,17 +308,19 @@ document.querySelectorAll(".success").forEach(s=>s.style.display="block")
 }}
 
 function copyAccount() {
-const bankDetails = `Nqobile & Sebina Wedding
+  const bankDetails = `Nqobile & Sebina Wedding
 🏦 FNB Bank
 📍 Branch Code: 250655
 💳 Account: 62816409610
 👤 Account Name: Nqobile Khuzwayo
 📝 Reference: Wedding Gift`;
-navigator.clipboard.writeText(bankDetails).then(() => {
-alert("✅ BANK DETAILS COPIED!
-     n"+bankDetails+"
-      💰 Thank you for your generosity ❤️"); 
-});
+  
+  navigator.clipboard.writeText(bankDetails).then(() => {
+    alert("✅ BANK DETAILS COPIED!\n\n" + bankDetails + "\n💰 Thank you! ❤️");
+  }).catch(() => {
+    // Fallback for older browsers
+    prompt("Copy this:", bankDetails);
+  });
 }
 
 function copyDriveLink() {
