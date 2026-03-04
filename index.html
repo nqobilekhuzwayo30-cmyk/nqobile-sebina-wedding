@@ -48,20 +48,16 @@ body{font-family:"Cormorant Garamond",serif;background:linear-gradient(135deg,#f
 /* SECTIONS - MOBILE PERFECTED */
 .header-box{display:inline-block;border:2px solid #d8b384;border-radius:12px;padding:16px 24px;font-family:"Playfair Display",serif;font-size:clamp(1.6rem,5vw,2.4rem);margin-bottom:28px;animation:floatHeader 6s ease-in-out infinite;color:#2c1f1e}
 .map-container .header-box{color:#000}
-.map-container,.qna,.faq,.thank-you,.rsvp-card,.registry-card{background:rgba(255,255,255,0.9);border-radius:18px;padding:32px;margin-bottom:48px;text-align:center;box-shadow:0 25px 60px rgba(0,0,0,0.25);animation:floatSlow 9s ease-in-out infinite}
+.map-container,.qna,.faq,.thank-you,.rsvp-closed,.registry-card{background:rgba(255,255,255,0.9);border-radius:18px;padding:32px;margin-bottom:48px;text-align:center;box-shadow:0 25px 60px rgba(0,0,0,0.25);animation:floatSlow 9s ease-in-out infinite}
 .map-frame{position:relative;border-radius:18px;overflow:hidden;border:2px solid #d8b384;box-shadow:inset 0 0 0 1px rgba(216,179,132,0.4),0 20px 50px rgba(0,0,0,0.3);margin:20px 0}
 .map-frame::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.08),rgba(0,0,0,0.15));pointer-events:none}
 .map-frame iframe{width:100%;height:clamp(300px,44vw,370px);border:0;border-radius:16px;display:block}
 .address{margin-top:20px;font-size:clamp(1.2rem,4vw,1.4rem);line-height:1.75}
 .time{font-weight:bold;color:#d8b384}
 
-/* FORMS - MOBILE OPTIMIZED */
-.rsvp-card input,.rsvp-card textarea{width:100%;padding:20px;margin:16px 0;border-radius:12px;border:1px solid #ddd;background:rgba(255,255,255,0.8);font-size:18px;font-family:inherit}
-.rsvp-card textarea{min-height:120px}
-
 /* BUTTONS - TOUCH FRIENDLY */
-.rsvp-card button,.registry-button,.drive-button{width:100%;padding:22px;border:none;border-radius:35px;background:#d8b384;font-size:clamp(1.2rem,4.5vw,1.3rem);cursor:pointer;color:white;text-decoration:none;display:block;margin:16px 0;font-family:"Playfair Display",serif;font-weight:600;transition:all 0.3s ease;min-height:64px;text-align:center}
-.rsvp-card button:hover,.registry-button:hover,.drive-button:hover{transform:translateY(-2px);box-shadow:0 15px 40px rgba(216,179,132,0.4)}
+.registry-button,.drive-button{width:100%;padding:22px;border:none;border-radius:35px;background:#d8b384;font-size:clamp(1.2rem,4.5vw,1.3rem);cursor:pointer;color:white;text-decoration:none;display:block;margin:16px 0;font-family:"Playfair Display",serif;font-weight:600;transition:all 0.3s ease;min-height:64px;text-align:center}
+.registry-button:hover,.drive-button:hover{transform:translateY(-2px);box-shadow:0 15px 40px rgba(216,179,132,0.4)}
 .photo-buttons{display:grid;grid-template-columns:1fr;gap:16px;margin:32px 0}@media (min-width:500px){.photo-buttons{grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}}
 .photo-buttons .registry-button{padding:20px;font-size:1.2rem}
 
@@ -69,8 +65,10 @@ body{font-family:"Cormorant Garamond",serif;background:linear-gradient(135deg,#f
 .qr-link{display:inline-block;transition:transform 0.3s ease;margin-bottom:28px}
 .qr-link img{width:clamp(240px,55vw,300px);height:clamp(240px,55vw,300px);border-radius:18px;box-shadow:0 25px 70px rgba(0,0,0,0.3);border:4px solid #d8b384;cursor:pointer;max-width:100%}
 
-/* SUCCESS & OTHER */
-.success{display:none;padding:28px;color:#b89b5e;border-radius:12px;background:rgba(216,179,132,0.1)}
+/* RSVP CLOSED */
+.rsvp-closed p{font-size:1.3rem;color:#666;margin:20px 0;line-height:1.75}
+
+/* OTHER */
 .qa-item{margin-bottom:32px;padding:28px 0;border-bottom:1px solid rgba(216,179,132,0.3);transition:transform 0.3s ease}@media (hover:hover){.qa-item:hover{transform:translateX(8px)}}
 .qa-item:last-child{border-bottom:none}
 .qa-item h3{color:#d8b384;font-family:"Playfair Display",serif;font-size:1.4rem;margin-bottom:16px;cursor:pointer}
@@ -98,7 +96,6 @@ body{font-family:"Cormorant Garamond",serif;background:linear-gradient(135deg,#f
 
 /* SAFARI iOS FIXES */
 @supports (-webkit-touch-callout: none) {
-  .rsvp-card input, .rsvp-card textarea {-webkit-appearance:none}
   .registry-button, .drive-button {-webkit-appearance:none;-webkit-tap-highlight-color:transparent}
 }
 </style>
@@ -154,20 +151,9 @@ Time <span class="time">15:00</span>
 </div>
 </div>
 
-<div class="rsvp-card">
-<div class="header-box">RSVP</div>
-<form action="https://docs.google.com/forms/d/e/1FAIpQLScNfgJbch0Xz2KU7RaLt58EaeB2QoEcxtvL7_S8GzjflThXqg/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true; setTimeout(showThankYou,600);">
-<input name="entry.994600838" placeholder="Full Name" required>
-<input name="entry.793758707" placeholder="Phone Number" required>
-<input name="entry.458040034" value="1" readonly style="display:none">
-<textarea name="entry.282977896" placeholder="Message (optional)"></textarea>
-<button type="submit">Send RSVP</button>
-</form>
-<iframe name="hidden_iframe" style="display:none"></iframe>
-<div id="rsvpSuccess" class="success">
-<h2>Thank you! ❤️</h2>
-<p>Your RSVP has been received. We can't wait to celebrate with you!</p>
-</div>
+<div class="rsvp-closed">
+<div class="header-box">RSVP Closed</div>
+<p>RSVP is now closed. Thank you to everyone who registered their attendance!</p>
 </div>
 
 <div class="registry-card">
@@ -300,13 +286,6 @@ minutes.textContent = Math.floor((diff / 60000) % 60)
 seconds.textContent = Math.floor((diff / 1000) % 60)
 }, 1000)
 
-var submitted=false
-function showThankYou(){
-if(submitted){
-document.querySelectorAll(".rsvp-card form").forEach(f=>f.style.display="none")
-document.querySelectorAll(".success").forEach(s=>s.style.display="block")
-}}
-
 function copyAccount() {
   const bankDetails = `Nqobile & Sebina Wedding
 🏦 FNB Bank
@@ -316,7 +295,7 @@ function copyAccount() {
 📝 Reference: Wedding Gift`;
   
   navigator.clipboard.writeText(bankDetails).then(() => {
-    alert("✅ BANK DETAILS COPIED!\n\n" + bankDetails + "\n💰 Thank you! ❤️");
+    alert("✅ BANK DETAILS COPIED!\\n\\n" + bankDetails + "\\n💰 Thank you! ❤️");
   }).catch(() => {
     // Fallback for older browsers
     prompt("Copy this:", bankDetails);
@@ -326,7 +305,7 @@ function copyAccount() {
 function copyDriveLink() {
 const driveLink = "https://drive.google.com/drive/folders/18Bq9bGE0HRcfwKAfuliapB-AoMlzHLoL?usp=sharing";
 navigator.clipboard.writeText(driveLink).then(() => {
-alert("✅ GOOGLE DRIVE LINK COPIED!\\n\\n📸 Share your wedding photos!\\n(Tip: Name folder 'Table # - Your Names')");
+alert("✅ GOOGLE DRIVE LINK COPIED!\\\\n\\\\n📸 Share your wedding photos!\\\\n(Tip: Name folder 'Table # - Your Names')");
 });
 }
 
