@@ -48,7 +48,7 @@ body{font-family:"Cormorant Garamond",serif;background:linear-gradient(135deg,#f
 /* SECTIONS - MOBILE PERFECTED */
 .header-box{display:inline-block;border:2px solid #d8b384;border-radius:12px;padding:16px 24px;font-family:"Playfair Display",serif;font-size:clamp(1.6rem,5vw,2.4rem);margin-bottom:28px;animation:floatHeader 6s ease-in-out infinite;color:#2c1f1e}
 .map-container .header-box{color:#000}
-.map-container,.qna,.faq,.thank-you,.rsvp-closed,.registry-card,.photo-album{background:rgba(255,255,255,0.9);border-radius:18px;padding:32px;margin-bottom:48px;text-align:center;box-shadow:0 25px 60px rgba(0,0,0,0.25);animation:floatSlow 9s ease-in-out infinite}
+.map-container,.qna,.faq,.thank-you,.rsvp-closed,.registry-card,.photo-album,.rsvp-form-card{background:rgba(255,255,255,0.9);border-radius:18px;padding:32px;margin-bottom:48px;text-align:center;box-shadow:0 25px 60px rgba(0,0,0,0.25);animation:floatSlow 9s ease-in-out infinite}
 .map-frame{position:relative;border-radius:18px;overflow:hidden;border:2px solid #d8b384;box-shadow:inset 0 0 0 1px rgba(216,179,132,0.4),0 20px 50px rgba(0,0,0,0.3);margin:20px 0}
 .map-frame::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.08),rgba(0,0,0,0.15));pointer-events:none}
 .map-frame iframe{width:100%;height:clamp(300px,44vw,370px);border:0;border-radius:16px;display:block}
@@ -60,6 +60,12 @@ body{font-family:"Cormorant Garamond",serif;background:linear-gradient(135deg,#f
 .registry-button:hover,.drive-button:hover{transform:translateY(-2px);box-shadow:0 15px 40px rgba(216,179,132,0.4)}
 .photo-buttons{display:grid;grid-template-columns:1fr;gap:16px;margin:32px 0}@media (min-width:500px){.photo-buttons{grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}}
 .photo-buttons .registry-button{padding:20px;font-size:1.2rem}
+
+/* RSVP FORM */
+.rsvp-form{display:grid;gap:16px;max-width:500px;margin:24px auto 0;text-align:left}
+.rsvp-form input,.rsvp-form select,.rsvp-form textarea{padding:16px;border-radius:12px;border:1px solid #d8b384;font-size:1.05rem;font-family:"Cormorant Garamond",serif;background:#fff}
+.rsvp-form textarea{resize:vertical}
+.rsvp-status{text-align:center;font-size:1.1rem;color:#2c1f1e;margin-top:10px}
 
 /* QR LINK - MOBILE PERFECT & CENTERED */
 .photo-album .qr-link{display:block;margin:0 auto 28px;text-align:center}
@@ -159,6 +165,24 @@ Time <span class="time">15:00</span>
 </div>
 </div>
 
+<div class="rsvp-form-card">
+<div class="header-box">RSVP</div>
+<p>Please confirm your attendance below.</p>
+<form id="rsvpForm" class="rsvp-form">
+<input type="text" id="name" placeholder="Full name" required>
+<input type="tel" id="phone" placeholder="Phone number" required>
+<select id="attendance" required>
+<option value="">Will you attend?</option>
+<option value="yes">Yes, I will attend</option>
+<option value="no">No, I cannot attend</option>
+</select>
+<input type="number" id="guests" min="1" value="1" placeholder="Number of guests">
+<textarea id="message" rows="4" placeholder="Message or note"></textarea>
+<button type="submit" class="registry-button" style="background:#d8b384;">Submit RSVP</button>
+<p id="rsvpStatus" class="rsvp-status"></p>
+</form>
+</div>
+
 <div class="rsvp-closed">
 <div class="header-box">RSVP Closed</div>
 <p>RSVP is now closed. Thank you to everyone who registered their attendance!</p>
@@ -167,7 +191,7 @@ Time <span class="time">15:00</span>
 <div class="registry-card">
 <div class="header-box">Gift Registry</div>
 <p style="font-size:1.3rem;margin-bottom:30px;color:#555;">Your presence is our greatest gift, but if you'd like Gift's are welcome:</p>
-<div style="display:grid;grid-template-columns:1fr;gap:20px;margin:30px 0}@media (min-width:600px){grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}">
+<div style="display:grid;grid-template-columns:1fr;gap:20px;margin:30px 0">@media (min-width:600px){grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}">
 <a href="https://www.mrphome.com/en_za/giftregistry/view/index/id/SMOTHE6287" target="_blank" class="registry-button">
 <i class="fas fa-gift" style="margin-right:8px;"></i>MR Price Home Registry
 </a>
@@ -276,6 +300,7 @@ drive.google.com/wedding-photos
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-analytics.js";
+  import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyB6rwfrMOLPcz17LiLe4vZwLrd3qngyHVY",
@@ -288,7 +313,34 @@ drive.google.com/wedding-photos
   };
 
   const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
+  getAnalytics(app);
+  const db = getFirestore(app);
+
+  const form = document.getElementById("rsvpForm");
+  const status = document.getElementById("rsvpStatus");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    status.textContent = "Submitting...";
+
+    try {
+      await addDoc(collection(db, "rsvps"), {
+        name: document.getElementById("name").value.trim(),
+        phone: document.getElementById("phone").value.trim(),
+        attendance: document.getElementById("attendance").value,
+        guests: Number(document.getElementById("guests").value || 1),
+        message: document.getElementById("message").value.trim(),
+        createdAt: serverTimestamp()
+      });
+
+      form.reset();
+      document.getElementById("guests").value = 1;
+      status.textContent = "RSVP submitted successfully.";
+    } catch (err) {
+      console.error(err);
+      status.textContent = "Something went wrong. Please try again.";
+    }
+  });
 </script>
 
 <script>
@@ -322,7 +374,6 @@ function copyAccount() {
   navigator.clipboard.writeText(bankDetails).then(() => {
     alert("✅ BANK DETAILS COPIED!\\n\\n" + bankDetails + "\\n💰 Thank you! ❤️");
   }).catch(() => {
-    // Fallback for older browsers
     prompt("Copy this:", bankDetails);
   });
 }
@@ -334,7 +385,6 @@ alert("✅ GOOGLE DRIVE LINK COPIED!\\\\n\\\\n📸 Share your wedding photos!\\\
 });
 }
 
-// Invitation popup
 setTimeout(()=>{
 const popup = document.getElementById("invitePopup")
 const overlay = document.getElementById("inviteOverlay")
