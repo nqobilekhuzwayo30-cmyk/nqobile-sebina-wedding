@@ -273,6 +273,24 @@ drive.google.com/wedding-photos
 </div>
 </div>
 
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-analytics.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyB6rwfrMOLPcz17LiLe4vZwLrd3qngyHVY",
+    authDomain: "weddings-64b5e.firebaseapp.com",
+    projectId: "weddings-64b5e",
+    storageBucket: "weddings-64b5e.firebasestorage.app",
+    messagingSenderId: "440599433781",
+    appId: "1:440599433781:web:b5f70ed3bb51db922d177c",
+    measurementId: "G-8K9LGT5V3B"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
+
 <script>
 // Countdown
 const weddingDate = new Date("2026-03-27T13:00:00").getTime()
