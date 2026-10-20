@@ -10,7 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <meta property="og:title" content="Nqobile & Sebina Wedding">
-<meta property="og:description" content="Join us as we celebrate our wedding on March 27, 2026">
+<meta property="og:description" content="Join us as we celebrate our wedding on March 27, 2027">
 <meta property="og:image" content="https://raw.githubusercontent.com/nqobilekhuzwayo30-cmyk/nqobile-sebina-wedding/main/share.png">
 <meta property="og:url" content="https://nqobilekhuzwayo30-cmyk.github.io/nqobile-sebina-wedding/">
 <meta property="og:type" content="website">
@@ -65,7 +65,16 @@ body{font-family:"Cormorant Garamond",serif;background:linear-gradient(135deg,#f
 .photo-album .qr-link{display:block;margin:0 auto 28px;text-align:center}
 .photo-album .qr-link img{width:clamp(240px,55vw,300px);height:clamp(240px,55vw,300px);border-radius:18px;box-shadow:0 25px 70px rgba(0,0,0,0.3);border:4px solid #d8b384;cursor:pointer;max-width:100%;display:block;margin:0 auto}
 
-/* RSVP CLOSED */
+/* RSVP FORM */
+.rsvp-closed form{max-width:680px;margin:24px auto 0;text-align:left}
+.rsvp-closed form label{display:block;font-size:1.1rem;font-weight:600;color:#2c1f1e;margin:14px 0 7px}
+.rsvp-closed form input:not([type="radio"]),.rsvp-closed form select,.rsvp-closed form textarea{width:100%;padding:14px 16px;border:1px solid rgba(216,179,132,0.8);border-radius:10px;background:#fff;color:#2c1f1e;font:inherit;user-select:text}
+.rsvp-closed form input[type="radio"]{width:20px;height:20px;accent-color:#d8b384;flex-shrink:0}
+.rsvp-options{display:grid;grid-template-columns:1fr;gap:10px;margin:10px 0 18px}
+.rsvp-options label{display:flex!important;align-items:center;gap:10px;background:rgba(216,179,132,0.12);padding:14px;border-radius:10px;margin:0!important;font-weight:400!important}
+#rsvp-status{min-height:1.6em;text-align:center;margin-top:14px;font-size:1.05rem;color:#555}
+#rsvp-form button:disabled{opacity:.65;cursor:wait}
+[hidden]{display:none!important}
 .rsvp-closed p{font-size:1.3rem;color:#666;margin:20px 0;line-height:1.75}
 
 /* PHOTO ALBUM - FULLY CENTERED */
@@ -117,7 +126,7 @@ body{font-family:"Cormorant Garamond",serif;background:linear-gradient(135deg,#f
 <div class="container">
 <div class="hero-card">
 <h1 class="hero-names">Nqobile & Sebina</h1>
-<p class="hero-date">Friday, March 27, 2026</p>
+<p class="hero-date">Saturday, March 27, 2027</p>
 <video autoplay muted loop playsinline class="invite-video">
 <source src="vid.mp4" type="video/mp4">
 </video>
@@ -160,8 +169,38 @@ Time <span class="time">15:00</span>
 </div>
 
 <div class="rsvp-closed">
-<div class="header-box">RSVP Closed</div>
-<p>RSVP is now closed. Thank you to everyone who registered their attendance!</p>
+<div class="header-box">RSVP</div>
+<p>Please let us know whether you can join us. Please RSVP by March 1st, so we can have an accurate headcount.</p>
+<form id="rsvp-form">
+<label for="rsvp-name">Full name *</label>
+<input id="rsvp-name" name="guest_name" type="text" autocomplete="name" maxlength="100" placeholder="Enter your full name" required>
+
+<label for="rsvp-email">Email address (optional)</label>
+<input id="rsvp-email" name="email" type="email" autocomplete="email" maxlength="254" placeholder="Enter your email address">
+
+<label>Will you be attending? *</label>
+<div class="rsvp-options">
+<label><input type="radio" name="attending" value="true" required> Joyfully accepts</label>
+<label><input type="radio" name="attending" value="false" required> Regretfully declines</label>
+</div>
+
+<div id="guest-count-wrap" hidden>
+<label for="guest-count">Number attending (including you) *</label>
+<select id="guest-count" name="guest_count">
+<option value="1">1 person</option>
+<option value="2">2 people</option>
+<option value="3">3 people</option>
+<option value="4">4 people</option>
+<option value="5">5 people</option>
+</select>
+</div>
+
+<label for="rsvp-message">Message (optional)</label>
+<textarea id="rsvp-message" name="message" rows="3" maxlength="1000" placeholder="Leave the couple a message"></textarea>
+
+<button class="registry-button" type="submit">Send RSVP</button>
+<p id="rsvp-status" aria-live="polite" role="status"></p>
+</form>
 </div>
 
 <div class="registry-card">
@@ -275,7 +314,7 @@ drive.google.com/wedding-photos
 
 <script>
 // Countdown
-const weddingDate = new Date("2026-03-27T13:00:00").getTime()
+const weddingDate = new Date("2027-03-27T13:00:00").getTime()
 const days = document.getElementById("days")
 const hours = document.getElementById("hours")
 const minutes = document.getElementById("minutes")
@@ -325,6 +364,91 @@ overlay.classList.add("fade-out")
 setTimeout(()=>overlay.style.display="none",800)
 },4000)
 </script>
+
+<script type="module">
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+
+// This invitation submits RSVPs to the event with ID event_002.
+const SUPABASE_URL = 'https://cujkoohnrjbritffqqed.supabase.co';
+const SUPABASE_PUBLISHABLE_KEY = 'PASTE_YOUR_SUPABASE_PUBLISHABLE_KEY_HERE';
+const EVENT_ID = 'event_002';
+
+const rsvpForm = document.getElementById('rsvp-form');
+const rsvpStatus = document.getElementById('rsvp-status');
+const guestCountWrap = document.getElementById('guest-count-wrap');
+const guestCountSelect = document.getElementById('guest-count');
+
+// Only initialize Supabase when the real publishable key has been added.
+const supabaseConfigured = SUPABASE_PUBLISHABLE_KEY !== 'PASTE_YOUR_SUPABASE_PUBLISHABLE_KEY_HERE';
+const supabase = supabaseConfigured
+  ? createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY)
+  : null;
+
+rsvpForm.querySelectorAll('input[name="attending"]').forEach((input) => {
+  input.addEventListener('change', () => {
+    const attending = rsvpForm.querySelector('input[name="attending"]:checked')?.value === 'true';
+    guestCountWrap.hidden = !attending;
+    guestCountSelect.required = attending;
+  });
+});
+
+rsvpForm.addEventListener('submit', async (event) => {
+  event.preventDefault();
+  if (!rsvpForm.reportValidity()) return;
+
+  if (!supabase) {
+    rsvpStatus.textContent = 'RSVP is not connected yet. Please contact the couple directly.';
+    console.warn('Add the Supabase publishable key to enable RSVP submissions.');
+    return;
+  }
+
+  const formData = new FormData(rsvpForm);
+  const attending = formData.get('attending') === 'true';
+  const guestName = String(formData.get('guest_name') || '').trim();
+  const emailValue = String(formData.get('email') || '').trim();
+  const messageValue = String(formData.get('message') || '').trim();
+  const guestCount = attending ? Number(guestCountSelect.value) : 0;
+
+  if (!guestName) {
+    rsvpStatus.textContent = 'Please enter your full name.';
+    return;
+  }
+
+  const submitButton = rsvpForm.querySelector('button[type="submit"]');
+  submitButton.disabled = true;
+  rsvpStatus.textContent = 'Sending your RSVP...';
+
+  try {
+    const { error } = await supabase.from('rsvps').insert([{
+      event_id: EVENT_ID,
+      guest_name: guestName,
+      email: emailValue || null,
+      attending,
+      guest_count: guestCount,
+      message: messageValue || null
+    }]);
+
+    if (error) {
+      console.error('RSVP submission error:', error);
+      rsvpStatus.textContent = 'Sorry, your RSVP could not be submitted. Please try again or contact the couple.';
+      return;
+    }
+
+    rsvpStatus.textContent = attending
+      ? 'Thank you! Your RSVP has been received.'
+      : 'Thank you for letting us know. Your response has been received.';
+    rsvpForm.reset();
+    guestCountWrap.hidden = true;
+    guestCountSelect.required = false;
+  } catch (error) {
+    console.error('Unexpected RSVP error:', error);
+    rsvpStatus.textContent = 'Something went wrong. Please try again or contact the couple.';
+  } finally {
+    submitButton.disabled = false;
+  }
+});
+</script>
+
 </body>
 </html>
 
