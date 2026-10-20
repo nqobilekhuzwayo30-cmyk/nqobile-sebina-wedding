@@ -370,7 +370,7 @@ import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js
 
 // This invitation submits RSVPs to the event with ID event_002.
 const SUPABASE_URL = 'https://cujkoohnrjbritffqqed.supabase.co';
-const SUPABASE_PUBLISHABLE_KEY = 'PASTE_YOUR_SUPABASE_PUBLISHABLE_KEY_HERE';
+const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_HTm5MBMgp-xMJLsa1iCvGA_h4-Aq-w9';
 const EVENT_ID = 'event_002';
 
 const rsvpForm = document.getElementById('rsvp-form');
@@ -379,7 +379,7 @@ const guestCountWrap = document.getElementById('guest-count-wrap');
 const guestCountSelect = document.getElementById('guest-count');
 
 // Only initialize Supabase when the real publishable key has been added.
-const supabaseConfigured = SUPABASE_PUBLISHABLE_KEY !== 'PASTE_YOUR_SUPABASE_PUBLISHABLE_KEY_HERE';
+const supabaseConfigured = SUPABASE_PUBLISHABLE_KEY !== 'sb_publishable_HTm5MBMgp-xMJLsa1iCvGA_h4-Aq-w9';
 const supabase = supabaseConfigured
   ? createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY)
   : null;
