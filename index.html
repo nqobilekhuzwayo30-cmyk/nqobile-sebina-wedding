@@ -378,8 +378,8 @@ const rsvpStatus = document.getElementById('rsvp-status');
 const guestCountWrap = document.getElementById('guest-count-wrap');
 const guestCountSelect = document.getElementById('guest-count');
 
-// Only initialize Supabase when the real publishable key has been added.
-const supabaseConfigured = SUPABASE_PUBLISHABLE_KEY !== 'sb_publishable_HTm5MBMgp-xMJLsa1iCvGA_h4-Aq-w9';
+
+const supabaseConfigured = SUPABASE_PUBLISHABLE_KEY !== sb_publishable_HTm5MBMgp-xMJLsa1iCvGA_h4-Aq-w9;
 const supabase = supabaseConfigured
   ? createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY)
   : null;
