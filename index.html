@@ -369,7 +369,7 @@ setTimeout(()=>overlay.style.display="none",800)
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
 
 // This invitation submits RSVPs to the event with ID event_002.
-const SUPABASE_URL = https://cujkoohnrjbritffqqed.supabase.co/rest/v1';
+const SUPABASE_URL = 'https://cujkoohnrjbritffqqed.supabase.co';
 const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_HTm5MBMgp-xMJLsa1iCvGA_h4-Aq-w9';
 const EVENT_ID = 'event_002';
 
@@ -378,8 +378,7 @@ const rsvpStatus = document.getElementById('rsvp-status');
 const guestCountWrap = document.getElementById('guest-count-wrap');
 const guestCountSelect = document.getElementById('guest-count');
 
-
-const supabaseConfigured = SUPABASE_PUBLISHABLE_KEY !== 'sb_publishable_HTm5MBMgp-xMJLsa1iCvGA_h4-Aq-w9';
+const supabaseConfigured = Boolean(SUPABASE_URL && SUPABASE_PUBLISHABLE_KEY);
 const supabase = supabaseConfigured
   ? createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY)
   : null;
@@ -398,7 +397,7 @@ rsvpForm.addEventListener('submit', async (event) => {
 
   if (!supabase) {
     rsvpStatus.textContent = 'RSVP is not connected yet. Please contact the couple directly.';
-    console.warn('sb_publishable_HTm5MBMgp-xMJLsa1iCvGA_h4-Aq-w9');
+    console.error('Supabase URL or publishable key is missing.');
     return;
   }
 
@@ -451,5 +450,3 @@ rsvpForm.addEventListener('submit', async (event) => {
 
 </body>
 </html>
-
-
