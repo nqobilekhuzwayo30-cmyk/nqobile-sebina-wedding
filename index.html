@@ -379,7 +379,7 @@ const guestCountWrap = document.getElementById('guest-count-wrap');
 const guestCountSelect = document.getElementById('guest-count');
 
 
-const supabaseConfigured = SUPABASE_PUBLISHABLE_KEY !== sb_publishable_HTm5MBMgp-xMJLsa1iCvGA_h4-Aq-w9;
+const supabaseConfigured = SUPABASE_PUBLISHABLE_KEY !== 'sb_publishable_HTm5MBMgp-xMJLsa1iCvGA_h4-Aq-w9';
 const supabase = supabaseConfigured
   ? createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY)
   : null;
@@ -398,7 +398,7 @@ rsvpForm.addEventListener('submit', async (event) => {
 
   if (!supabase) {
     rsvpStatus.textContent = 'RSVP is not connected yet. Please contact the couple directly.';
-    console.warn('Add the Supabase publishable key to enable RSVP submissions.');
+    console.warn('sb_publishable_HTm5MBMgp-xMJLsa1iCvGA_h4-Aq-w9');
     return;
   }
 
